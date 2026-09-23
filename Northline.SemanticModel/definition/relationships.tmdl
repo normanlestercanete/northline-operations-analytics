@@ -1,0 +1,102 @@
+relationship a152e1ea-6777-4666-915d-32adddc04b2c
+	fromColumn: Products.SupplierID
+	toColumn: Suppliers.SupplierID
+
+relationship c14a9efc-549d-4413-ace8-401ad2fbddcc
+	fromColumn: Orders.WarehouseID
+	toColumn: Warehouses.WarehouseID
+
+relationship ee241013-e7be-4aac-82e6-4b7ec157b961
+	fromColumn: Orders.ProductID
+	toColumn: Products.ProductID
+
+relationship 3f287059-7744-4ce8-a333-6557ce88fa33
+	fromColumn: Orders.PromisedDate
+	toColumn: Calendar.Date
+
+relationship 02fb0607-33bb-4400-83a1-7462a30319ef
+	isActive: false
+	fromColumn: Orders.OrderDate
+	toColumn: Calendar.Date
+
+relationship ec6810a2-d105-4602-ae5e-29abfb7841e8
+	fromColumn: Shipments.WarehouseID
+	toColumn: Warehouses.WarehouseID
+
+relationship 4db8a7b8-ca27-46b1-bc8c-6c135f287631
+	fromColumn: Shipments.ProductID
+	toColumn: Products.ProductID
+
+relationship 13b86b06-b3ee-46b0-97fc-f1a33e1383d3
+	fromColumn: Shipments.Date
+	toColumn: Calendar.Date
+
+relationship f2d9659d-479f-4705-aded-7be420030e92
+	fromColumn: Purchases.WarehouseID
+	toColumn: Warehouses.WarehouseID
+
+relationship aa59fc9a-189a-4251-8476-972afded80d7
+	fromColumn: Purchases.ProductID
+	toColumn: Products.ProductID
+
+relationship 36d53f9c-d782-486c-b66a-6692efd64218
+	fromColumn: Purchases.PromisedDate
+	toColumn: Calendar.Date
+
+relationship e842e96e-bbcf-4de1-a413-580612e45533
+	isActive: false
+	fromColumn: Purchases.OrderDate
+	toColumn: Calendar.Date
+
+relationship 3210279b-2f23-480a-8231-5632439c2a7a
+	fromColumn: Receipts.WarehouseID
+	toColumn: Warehouses.WarehouseID
+
+relationship 5ba41a5b-feea-4d58-b087-2e2bdf27f35c
+	fromColumn: Receipts.ProductID
+	toColumn: Products.ProductID
+
+relationship 4bffba5d-392a-45ff-9e25-4c9ff6addafc
+	fromColumn: Receipts.Date
+	toColumn: Calendar.Date
+
+relationship fc020ca2-3129-4f0f-92f4-ac000ca67aaa
+	fromColumn: Inventory.WarehouseID
+	toColumn: Warehouses.WarehouseID
+
+relationship f06f8ed6-2c99-46f0-be4e-a865a8d8bd6a
+	fromColumn: Inventory.ProductID
+	toColumn: Products.ProductID
+
+relationship 435f3c44-ed1c-47be-93f0-9b4c2c925bfb
+	fromColumn: Inventory.Date
+	toColumn: Calendar.Date
+
+relationship a403cfa7-1eff-4e13-b2a2-ddf575ebd8f8
+	fromColumn: Backlog.WarehouseID
+	toColumn: Warehouses.WarehouseID
+
+relationship 7eb3361a-21a1-4cf0-8dea-200e86cd632c
+	fromColumn: Backlog.ProductID
+	toColumn: Products.ProductID
+
+relationship 8c7cb9e8-056d-40f6-bb98-1e049b32ba2e
+	fromColumn: Backlog.Date
+	toColumn: Calendar.Date
+
+relationship deaa702b-f3ea-40e3-b20d-04dc043d4bee
+	fromColumn: Throughput.WarehouseID
+	toColumn: Warehouses.WarehouseID
+
+relationship 9fcacd9f-b342-43bb-94f0-f0f169130b57
+	fromColumn: Throughput.Date
+	toColumn: Calendar.Date
+
+relationship 283b44f3-22b7-4439-80e9-3afd8c29679c
+	fromColumn: Backlog.Stage
+	toColumn: Stages.Stage
+
+relationship fbde9c07-3e19-400c-ba2d-651337fe8de5
+	fromColumn: Throughput.Stage
+	toColumn: Stages.Stage
+

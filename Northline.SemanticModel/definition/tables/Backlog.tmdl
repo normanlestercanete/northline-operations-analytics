@@ -1,0 +1,77 @@
+table Backlog
+	lineageTag: 80763e10-10a2-4512-8164-29ced2abcbae
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 2524ba1d-7bcc-421e-8e32-fdd9585f344c
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OrderID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 539ef2c6-fa61-40a2-9e6d-10d7fcb0f81c
+		summarizeBy: none
+		sourceColumn: OrderID
+
+	column WarehouseID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 50801664-442c-4c8c-8486-acf356ce7b5c
+		summarizeBy: none
+		sourceColumn: WarehouseID
+
+	column ProductID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4b1aec83-0361-4233-bead-05a4cdc49ef6
+		summarizeBy: none
+		sourceColumn: ProductID
+
+	column Stage
+		dataType: string
+		lineageTag: fcc2863f-a6c2-4295-bd72-a542a75b7146
+		summarizeBy: none
+		sourceColumn: Stage
+
+	column OpenUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4907e974-c549-4d23-8132-1404ef658d90
+		summarizeBy: none
+		sourceColumn: OpenUnits
+
+	column OpenValueUSD
+		dataType: decimal
+		formatString: $#,0.00
+		lineageTag: 0a3c6e16-06a0-454a-872e-779d73a9e403
+		summarizeBy: none
+		sourceColumn: OpenValueUSD
+
+	column OverdueUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: 116179d3-cef3-43eb-8ff5-6f7740fc8b5d
+		summarizeBy: none
+		sourceColumn: OverdueUnits
+
+	column AgeUnitDays
+		dataType: int64
+		formatString: #,0
+		lineageTag: 24a88666-01d9-45bd-975e-5554b2ee7281
+		summarizeBy: none
+		sourceColumn: AgeUnitDays
+
+	partition Backlog = m
+		mode: import
+		source =
+				let
+				 Source = Csv.Document(File.Contents(DataFolder & "Backlog.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				 Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				 Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				 Typed = Table.TransformColumnTypes(Nulls, {{"Date", type date}, {"OrderID", Int64.Type}, {"WarehouseID", Int64.Type}, {"ProductID", Int64.Type}, {"Stage", type text}, {"OpenUnits", Int64.Type}, {"OpenValueUSD", Currency.Type}, {"OverdueUnits", Int64.Type}, {"AgeUnitDays", Int64.Type}}, "en-US")
+				in Typed
+

@@ -1,0 +1,70 @@
+table Throughput
+	lineageTag: 45d91156-ebe9-4eef-be40-6b135b325b41
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: db1014dc-f046-4500-969e-4e4da308360b
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WarehouseID
+		dataType: int64
+		formatString: #,0
+		lineageTag: a403c3cd-eb79-45b8-8d26-1e4ceb6dc74e
+		summarizeBy: none
+		sourceColumn: WarehouseID
+
+	column Stage
+		dataType: string
+		lineageTag: 73171cd3-4afc-485a-8b24-4a339e50dbde
+		summarizeBy: none
+		sourceColumn: Stage
+
+	column CapacityUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5c0601cb-2002-405a-a591-622f35a8d501
+		summarizeBy: none
+		sourceColumn: CapacityUnits
+
+	column CompletedUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2c44e155-7994-4e6a-91b0-86f689878335
+		summarizeBy: none
+		sourceColumn: CompletedUnits
+
+	column OpeningQueueUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: 0042fff6-871e-4b71-ba31-74399eb6739f
+		summarizeBy: none
+		sourceColumn: OpeningQueueUnits
+
+	column ClosingQueueUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: 06768da5-bdc2-4ee6-8114-d11493ed2888
+		summarizeBy: none
+		sourceColumn: ClosingQueueUnits
+
+	column WaitUnitDays
+		dataType: int64
+		formatString: #,0
+		lineageTag: e68d87de-b1ef-4c21-bcd5-f891138e7d6a
+		summarizeBy: none
+		sourceColumn: WaitUnitDays
+
+	partition Throughput = m
+		mode: import
+		source =
+				let
+				 Source = Csv.Document(File.Contents(DataFolder & "Throughput.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				 Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				 Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				 Typed = Table.TransformColumnTypes(Nulls, {{"Date", type date}, {"WarehouseID", Int64.Type}, {"Stage", type text}, {"CapacityUnits", Int64.Type}, {"CompletedUnits", Int64.Type}, {"OpeningQueueUnits", Int64.Type}, {"ClosingQueueUnits", Int64.Type}, {"WaitUnitDays", Int64.Type}}, "en-US")
+				in Typed
+

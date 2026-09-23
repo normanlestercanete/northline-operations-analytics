@@ -1,0 +1,35 @@
+table 'Trend Month'
+	lineageTag: b1a4fedb-ae9b-4e1f-8b2f-e4dd3e3f27b7
+
+	column MonthStart
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e02219dc-409f-4c7b-b15a-c32fe740df90
+		summarizeBy: none
+		sourceColumn: MonthStart
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Month
+		dataType: string
+		lineageTag: d15a1b9c-0a0d-44ca-aed9-78e200c85144
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: YearMonth
+
+	column YearMonth
+		dataType: int64
+		lineageTag: 8ab26237-1db1-4633-bc68-e99070ed9bb4
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+	partition 'Trend Month' = m
+		mode: import
+		source =
+				let
+				    Source = Table.SelectRows(Calendar, each Date.Day([Date]) = 1),
+				    Keep = Table.SelectColumns(Source, {"Date", "Month", "YearMonth"}),
+				    Result = Table.RenameColumns(Keep, {{"Date", "MonthStart"}})
+				in
+				    Result
+

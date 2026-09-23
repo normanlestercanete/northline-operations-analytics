@@ -1,0 +1,35 @@
+table 'Reporting Month'
+	lineageTag: 6bf32e63-a38d-4ce6-af17-799e43e9bc5d
+
+	column MonthStart
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b30bf306-2b55-4775-ba35-863a6e17f8d3
+		summarizeBy: none
+		sourceColumn: MonthStart
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Month
+		dataType: string
+		lineageTag: ca71863d-7905-4e4a-a217-0a54ef86636d
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: YearMonth
+
+	column YearMonth
+		dataType: int64
+		lineageTag: 06efeade-b52c-4372-b23d-67a2928dd775
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+	partition 'Reporting Month' = m
+		mode: import
+		source =
+				let
+				    Source = Table.SelectRows(Calendar, each Date.Day([Date]) = 1),
+				    Keep = Table.SelectColumns(Source, {"Date", "Month", "YearMonth"}),
+				    Result = Table.RenameColumns(Keep, {{"Date", "MonthStart"}})
+				in
+				    Result
+

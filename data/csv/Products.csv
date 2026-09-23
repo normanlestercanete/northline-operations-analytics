@@ -1,0 +1,33 @@
+ProductID,SKU,Product,Category,SupplierID,UnitCostUSD,DemandClass
+1,NL-1001,Fasteners 01,Fasteners,1,77.33,Core
+2,NL-1002,Fasteners 02,Fasteners,3,58.8,Core
+3,NL-1003,Fasteners 03,Fasteners,3,33.89,Core
+4,NL-1004,Fasteners 04,Fasteners,2,78.18,Core
+5,NL-1005,Fasteners 05,Fasteners,3,5.62,Core
+6,NL-1006,Fasteners 06,Fasteners,3,11.04,Core
+7,NL-1007,Fasteners 07,Fasteners,1,56.59,Core
+8,NL-1008,Fasteners 08,Fasteners,3,46.55,Slow moving
+9,NL-1009,Safety Equipment 01,Safety Equipment,4,10.22,Core
+10,NL-1010,Safety Equipment 02,Safety Equipment,2,63.53,Core
+11,NL-1011,Safety Equipment 03,Safety Equipment,4,53.43,Core
+12,NL-1012,Safety Equipment 04,Safety Equipment,4,58.61,Core
+13,NL-1013,Safety Equipment 05,Safety Equipment,1,73.2,Core
+14,NL-1014,Safety Equipment 06,Safety Equipment,4,60.01,Core
+15,NL-1015,Safety Equipment 07,Safety Equipment,4,46.21,Core
+16,NL-1016,Safety Equipment 08,Safety Equipment,2,22.29,Slow moving
+17,NL-1017,Motion Components 01,Motion Components,5,73.98,Core
+18,NL-1018,Motion Components 02,Motion Components,5,46.73,Core
+19,NL-1019,Motion Components 03,Motion Components,1,13.64,Core
+20,NL-1020,Motion Components 04,Motion Components,5,58.5,Core
+21,NL-1021,Motion Components 05,Motion Components,5,21.38,Core
+22,NL-1022,Motion Components 06,Motion Components,2,18.75,Core
+23,NL-1023,Motion Components 07,Motion Components,5,80.03,Core
+24,NL-1024,Motion Components 08,Motion Components,5,81.13,Slow moving
+25,NL-1025,Packaging 01,Packaging,1,13.1,Core
+26,NL-1026,Packaging 02,Packaging,6,55.63,Core
+27,NL-1027,Packaging 03,Packaging,6,78.71,Core
+28,NL-1028,Packaging 04,Packaging,2,10.11,Core
+29,NL-1029,Packaging 05,Packaging,6,14.52,Core
+30,NL-1030,Packaging 06,Packaging,6,29.94,Core
+31,NL-1031,Packaging 07,Packaging,1,21.45,Core
+32,NL-1032,Packaging 08,Packaging,6,10.56,Slow moving

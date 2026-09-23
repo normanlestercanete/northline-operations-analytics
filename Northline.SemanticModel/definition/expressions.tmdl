@@ -1,0 +1,5 @@
+expression DataFolder = "C:/Users/BUGS-RDP/Documents/GitHub/northline-operations-analytics/data/csv/" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 54d5a476-b1b5-4c01-b536-2ed061acc27f
+
+	annotation PBI_ResultType = Text
+

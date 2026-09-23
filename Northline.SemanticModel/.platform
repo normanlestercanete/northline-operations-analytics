@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Northline"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b7d5523e-870d-4b1f-b34f-046edf979c1b"
+  }
+}

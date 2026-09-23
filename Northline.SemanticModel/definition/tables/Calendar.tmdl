@@ -1,0 +1,45 @@
+table Calendar
+	lineageTag: 6bfc29c8-d044-44d3-b043-541ade770730
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: yyyy-MM-dd
+		lineageTag: c85bad90-9d4e-4a4c-9e26-7e98b6f45e13
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		lineageTag: 8be52ac0-da53-40fb-ba27-16cf4b8642fe
+		summarizeBy: none
+		sourceColumn: Year
+
+	column YearMonth
+		dataType: int64
+		lineageTag: b18bbc4b-ee53-4e85-a23c-3320ffb8bf5c
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+	column Month
+		dataType: string
+		lineageTag: d2705af5-e73f-4a1b-ab3f-2476b8974247
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: YearMonth
+
+	partition Calendar = m
+		mode: import
+		source =
+				let
+				    Dates = Table.FromColumns({List.Dates(#date(2024,1,1), Duration.Days(#date(2026,8,31)-#date(2024,1,1))+1, #duration(1,0,0,0))}, type table [Date=date]),
+				    Y = Table.AddColumn(Dates, "Year", each Date.Year([Date]), Int64.Type),
+				    YM = Table.AddColumn(Y, "YearMonth", each Date.Year([Date])*100+Date.Month([Date]), Int64.Type),
+				    Label = Table.AddColumn(YM, "Month", each Date.ToText([Date], "MMM yyyy", "en-US"), type text)
+				in
+				    Label
+
+	annotation PBI_ResultType = Table
+

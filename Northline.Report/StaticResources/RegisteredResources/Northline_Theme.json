@@ -1,0 +1,5247 @@
+{
+  "name": "Northline Operations",
+  "$schema": "https://raw.githubusercontent.com/microsoft/powerbi-desktop-samples/main/Report%20Theme%20JSON%20Schema/reportThemeSchema-2.156.json",
+  "dataColors": [
+    "#267B93",
+    "#ED9B40",
+    "#5576B9",
+    "#65AA94",
+    "#B36B77",
+    "#8E82B8",
+    "#89A9B0",
+    "#C6AA73"
+  ],
+  "textClasses": {
+    "callout": {
+      "color": "#000000",
+      "fontFace": "Arial"
+    },
+    "header": {
+      "color": "#000000",
+      "fontFace": "Arial"
+    },
+    "label": {
+      "color": "#000000",
+      "fontFace": "Arial"
+    },
+    "largeTitle": {
+      "color": "#000000",
+      "fontFace": "Arial",
+      "fontWeight": "normal",
+      "fontSize": 12.5
+    },
+    "title": {
+      "color": "#000000",
+      "fontFace": "Arial"
+    }
+  },
+  "bad": "#B3261E",
+  "neutral": "#000000",
+  "good": "#237A42",
+  "maximum": "#3C8178",
+  "minimum": "#DDECE8",
+  "center": "#8BAED6",
+  "tableAccent": "#267B93",
+  "foreground": "#000000",
+  "background": "#FFFFFF",
+  "backgroundLight": "#F0F4F8",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "background"
+              }
+            }
+          }
+        ],
+        "border": [
+          {
+            "color": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "radius": 9,
+            "show": true,
+            "width": 0.5
+          }
+        ],
+        "categoryAxis": [
+          {
+            "showAxisTitle": false,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "preferredCategoryWidth": 33,
+            "gridlineShow": true,
+            "gridlineColor": {
+              "solid": {
+                "color": "#D8E2E0"
+              }
+            },
+            "gridlineStyle": "dashed",
+            "gridlineThickness": 1,
+            "fontFamily": "Arial",
+            "fontSize": 11
+          }
+        ],
+        "divider": [
+          {
+            "show": false,
+            "width": 1
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false,
+            "color": {
+              "solid": {
+                "color": "foreground"
+              }
+            },
+            "shadowBlur": 12,
+            "angle": 90,
+            "shadowDistance": 4,
+            "shadowSpread": 2,
+            "transparency": 65,
+            "position": "Outer",
+            "preset": "Custom"
+          }
+        ],
+        "labels": [
+          {
+            "show": true,
+            "labelPosition": "Above",
+            "optimizeLabelDisplay": true,
+            "labelStyle": "Category, percent of total",
+            "labelPrecision": 1,
+            "percentageLabelPrecision": 1,
+            "fontSize": 12,
+            "fontFamily": "Arial"
+          }
+        ],
+        "legend": [
+          {
+            "position": "BottomRight",
+            "showTitle": false,
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontFamily": "Arial"
+          }
+        ],
+        "lineStyles": [
+          {
+            "lineChartType": "smooth",
+            "strokeWidth": 3,
+            "areaShow": false,
+            "areaMatchStrokeColor": false,
+            "showMarker": true,
+            "markerSize": 6.5,
+            "markerShape": "circle"
+          }
+        ],
+        "markers": [
+          {
+            "borderShow": true,
+            "borderColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "borderWidth": 4,
+            "borderColorMatchFill": false,
+            "borderTransparency": 50
+          }
+        ],
+        "padding": [
+          {
+            "top": 20
+          },
+          {
+            "bottom": 20
+          },
+          {
+            "left": 20
+          },
+          {
+            "right": 20
+          }
+        ],
+        "spacing": [
+          {
+            "customizeSpacing": true,
+            "spaceBelowTitle": 12,
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "subTitle": [
+          {
+            "show": false,
+            "fontSize": 12,
+            "fontFamily": "Arial"
+          }
+        ],
+        "title": [
+          {
+            "color": "#000000",
+            "fontFamily": "Arial",
+            "fontWeight": "normal",
+            "fontSize": 12.5
+          }
+        ],
+        "totals": [
+          {
+            "show": true,
+            "bold": true,
+            "fontSize": 12,
+            "fontFamily": "Arial"
+          }
+        ],
+        "valueAxis": [
+          {
+            "showAxisTitle": false,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "gridlineShow": true,
+            "gridlineColor": {
+              "solid": {
+                "color": "#D8E2E0"
+              }
+            },
+            "gridlineStyle": "dashed",
+            "gridlineThickness": 1,
+            "fontFamily": "Arial",
+            "fontSize": 11
+          }
+        ],
+        "visualTooltip": [
+          {
+            "show": true,
+            "fontFamily": "Arial",
+            "fontSize": 12,
+            "themedBackground": {
+              "solid": {
+                "color": "backgroundLight"
+              }
+            },
+            "titleFontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "valueFontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "actionFontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      },
+      "Matched borders": {
+        "dataPoint": [
+          {
+            "borderColorMatchFill": true,
+            "borderShow": true,
+            "borderSize": 2,
+            "fillTransparency": 50,
+            "transparency": 60
+          }
+        ],
+        "lineStyles": [
+          {
+            "lineChartType": "smooth",
+            "strokeWidth": 2.5,
+            "areaShow": true,
+            "areaMatchStrokeColor": true
+          }
+        ],
+        "ribbonBands": [
+          {
+            "borderColorMatchFill": true,
+            "borderShow": true,
+            "borderSize": 1,
+            "fillTransparency": 80
+          }
+        ],
+        "legend": [
+          {
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "actionButton": {
+      "*": {
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false
+          }
+        ],
+        "fill": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "fillColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "hover",
+            "fillColor": {
+              "solid": {
+                "color": "#E7F0EE"
+              }
+            }
+          },
+          {
+            "$id": "pressed",
+            "fillColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 15
+          },
+          {
+            "$id": "selected",
+            "fillColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 50
+          },
+          {
+            "$id": "disabled",
+            "fillColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 50
+          }
+        ],
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "ArrowRight",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/><path d='M12 5l7 7-7 7'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 6
+          },
+          {
+            "$id": "hover",
+            "shapeType": "custom",
+            "image": {
+              "name": "ArrowRight",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/><path d='M12 5l7 7-7 7'/></svg>"
+            },
+            "iconSize": 23,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 6
+          },
+          {
+            "$id": "pressed",
+            "shapeType": "custom",
+            "image": {
+              "name": "ArrowRight",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/><path d='M12 5l7 7-7 7'/></svg>"
+            },
+            "iconSize": 23,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 6
+          },
+          {
+            "$id": "selected",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 23,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 6
+          },
+          {
+            "$id": "disabled",
+            "shapeType": "custom",
+            "image": {
+              "name": "ArrowRight",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/><path d='M12 5l7 7-7 7'/></svg>"
+            },
+            "iconSize": 23,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 6
+          }
+        ],
+        "outline": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "lineColor": {
+              "solid": {
+                "color": "#D9EAE6"
+              }
+            },
+            "weight": 1
+          },
+          {
+            "$id": "hover",
+            "lineColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "weight": 1
+          },
+          {
+            "$id": "pressed",
+            "show": false
+          },
+          {
+            "$id": "selected",
+            "lineColor": {
+              "solid": {
+                "color": "foreground"
+              }
+            },
+            "weight": 1
+          }
+        ],
+        "padding": [
+          {
+            "top": 1,
+            "bottom": 1,
+            "left": 1,
+            "right": 1
+          }
+        ],
+        "shape": [
+          {
+            "$id": "default",
+            "tileShape": "rectangleRounded",
+            "rectangleRoundedCurve": 12
+          }
+        ],
+        "text": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "text": "Button",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "hover",
+            "text": "Button",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "pressed",
+            "text": "Button",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "selected",
+            "text": "Selected",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "disabled",
+            "text": "Button",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      },
+      "Circle-Arrow": {
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "ArrowRight",
+              "url": "data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' fill='none' stroke='%23808080' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'> <path d='M3 15h18'/> <path d='M14 8l8 7-8 7'/> </svg>"
+            },
+            "iconSize": 30,
+            "horizontalAlignment": "center",
+            "verticalAlignment": "middle",
+            "placement": "custom"
+          },
+          {
+            "$id": "hover",
+            "shapeType": "custom",
+            "image": {
+              "name": "ArrowRight",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/><path d='M12 5l7 7-7 7'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "center",
+            "verticalAlignment": "middle",
+            "placement": "custom"
+          },
+          {
+            "$id": "pressed",
+            "shapeType": "custom",
+            "image": {
+              "name": "ArrowRight",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/><path d='M12 5l7 7-7 7'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "center",
+            "verticalAlignment": "middle",
+            "placement": "custom"
+          },
+          {
+            "$id": "selected",
+            "shapeType": "custom",
+            "image": {
+              "name": "ArrowRight",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/><path d='M12 5l7 7-7 7'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "center",
+            "verticalAlignment": "middle",
+            "placement": "custom"
+          }
+        ],
+        "shape": [
+          {
+            "$id": "default",
+            "tileShape": "pill"
+          }
+        ],
+        "text": [
+          {
+            "show": false
+          }
+        ]
+      },
+      "Dashboard-Icon": {
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "Dashboard",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='7' height='7' rx='1'/><rect x='14' y='3' width='7' height='7' rx='1'/><rect x='3' y='14' width='7' height='7' rx='1'/><rect x='14' y='14' width='7' height='7' rx='1'/></svg>"
+            },
+            "iconSize": 20,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "hover",
+            "shapeType": "custom",
+            "image": {
+              "name": "Dashboard",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='7' height='7' rx='1'/><rect x='14' y='3' width='7' height='7' rx='1'/><rect x='3' y='14' width='7' height='7' rx='1'/><rect x='14' y='14' width='7' height='7' rx='1'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "pressed",
+            "shapeType": "custom",
+            "image": {
+              "name": "Dashboard",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='7' height='7' rx='1'/><rect x='14' y='3' width='7' height='7' rx='1'/><rect x='3' y='14' width='7' height='7' rx='1'/><rect x='14' y='14' width='7' height='7' rx='1'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "selected",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "disabled",
+            "shapeType": "custom",
+            "image": {
+              "name": "Dashboard",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='7' height='7' rx='1'/><rect x='14' y='3' width='7' height='7' rx='1'/><rect x='3' y='14' width='7' height='7' rx='1'/><rect x='14' y='14' width='7' height='7' rx='1'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          }
+        ]
+      },
+      "Dollar-Icon": {
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "DollarSign",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><line x1='12' y1='1' x2='12' y2='23'/><path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/></svg>"
+            },
+            "iconSize": 20,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "hover",
+            "shapeType": "custom",
+            "image": {
+              "name": "DollarSign",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='12' y1='1' x2='12' y2='23'/><path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "pressed",
+            "shapeType": "custom",
+            "image": {
+              "name": "DollarSign",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='12' y1='1' x2='12' y2='23'/><path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "selected",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "disabled",
+            "shapeType": "custom",
+            "image": {
+              "name": "DollarSign",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='12' y1='1' x2='12' y2='23'/><path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          }
+        ]
+      },
+      "Download-Icon": {
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "Download",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><polyline points='7 10 12 15 17 10'/><line x1='12' y1='15' x2='12' y2='3'/></svg>"
+            },
+            "iconSize": 20,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "hover",
+            "shapeType": "custom",
+            "image": {
+              "name": "Download",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><polyline points='7 10 12 15 17 10'/><line x1='12' y1='15' x2='12' y2='3'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "pressed",
+            "shapeType": "custom",
+            "image": {
+              "name": "Download",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><polyline points='7 10 12 15 17 10'/><line x1='12' y1='15' x2='12' y2='3'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "selected",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "disabled",
+            "shapeType": "custom",
+            "image": {
+              "name": "Download",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><polyline points='7 10 12 15 17 10'/><line x1='12' y1='15' x2='12' y2='3'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          }
+        ]
+      },
+      "Home": {
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "Home",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/><polyline points='9 22 9 12 15 12 15 22'/></svg>"
+            },
+            "iconSize": 20,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "hover",
+            "shapeType": "custom",
+            "image": {
+              "name": "Home",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/><polyline points='9 22 9 12 15 12 15 22'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "pressed",
+            "shapeType": "custom",
+            "image": {
+              "name": "Home",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/><polyline points='9 22 9 12 15 12 15 22'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "selected",
+            "shapeType": "custom",
+            "image": {
+              "name": "Home",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/><polyline points='9 22 9 12 15 12 15 22'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "disabled",
+            "shapeType": "custom",
+            "image": {
+              "name": "Home",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/><polyline points='9 22 9 12 15 12 15 22'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          }
+        ],
+        "text": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "text": "Home",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "hover",
+            "text": "Home",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "pressed",
+            "text": "Home",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "selected",
+            "text": "Home",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "disabled",
+            "text": "Home",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      },
+      "No-Icon": {
+        "icon": [
+          {
+            "show": false
+          }
+        ]
+      },
+      "Selected": {
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "fill": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "fillColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "hover",
+            "fillColor": {
+              "solid": {
+                "color": "#D9EAE6"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "pressed",
+            "fillColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "selected",
+            "fillColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 24,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "hover",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 24,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "pressed",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 24,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "selected",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 24,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          }
+        ],
+        "padding": [
+          {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          }
+        ],
+        "shape": [
+          {
+            "$id": "default",
+            "tileShape": "rectangleRounded",
+            "rectangleRoundedCurve": 12
+          }
+        ],
+        "text": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "text": "Selected",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "hover",
+            "text": "Selected",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "pressed",
+            "text": "Selected",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "selected",
+            "text": "Selected",
+            "fontFamily": "Arial",
+            "fontSize": 13,
+            "fontWeight": "600",
+            "horizontalAlignment": "center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      },
+      "Settings-Icon": {
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "Settings",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='3'/><path d='M12 1v4'/><path d='M12 19v4'/><path d='M4.22 4.22l2.83 2.83'/><path d='M16.95 16.95l2.83 2.83'/><path d='M1 12h4'/><path d='M19 12h4'/><path d='M4.22 19.78l2.83-2.83'/><path d='M16.95 7.05l2.83-2.83'/></svg>"
+            },
+            "iconSize": 20,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "hover",
+            "shapeType": "custom",
+            "image": {
+              "name": "Settings",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='3'/><path d='M12 1v4'/><path d='M12 19v4'/><path d='M4.22 4.22l2.83 2.83'/><path d='M16.95 16.95l2.83 2.83'/><path d='M1 12h4'/><path d='M19 12h4'/><path d='M4.22 19.78l2.83-2.83'/><path d='M16.95 7.05l2.83-2.83'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "pressed",
+            "shapeType": "custom",
+            "image": {
+              "name": "Settings",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='3'/><path d='M12 1v4'/><path d='M12 19v4'/><path d='M4.22 4.22l2.83 2.83'/><path d='M16.95 16.95l2.83 2.83'/><path d='M1 12h4'/><path d='M19 12h4'/><path d='M4.22 19.78l2.83-2.83'/><path d='M16.95 7.05l2.83-2.83'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "selected",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "disabled",
+            "shapeType": "custom",
+            "image": {
+              "name": "Settings",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='3'/><path d='M12 1v4'/><path d='M12 19v4'/><path d='M4.22 4.22l2.83 2.83'/><path d='M16.95 16.95l2.83 2.83'/><path d='M1 12h4'/><path d='M19 12h4'/><path d='M4.22 19.78l2.83-2.83'/><path d='M16.95 7.05l2.83-2.83'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          }
+        ]
+      },
+      "Trend-Icon": {
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "TrendingUp",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='23 6 13.5 15.5 8.5 10.5 1 18'/><polyline points='17 6 23 6 23 12'/></svg>"
+            },
+            "iconSize": 20,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "hover",
+            "shapeType": "custom",
+            "image": {
+              "name": "TrendingUp",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='23 6 13.5 15.5 8.5 10.5 1 18'/><polyline points='17 6 23 6 23 12'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "pressed",
+            "shapeType": "custom",
+            "image": {
+              "name": "TrendingUp",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='23 6 13.5 15.5 8.5 10.5 1 18'/><polyline points='17 6 23 6 23 12'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "selected",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "disabled",
+            "shapeType": "custom",
+            "image": {
+              "name": "TrendingUp",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='23 6 13.5 15.5 8.5 10.5 1 18'/><polyline points='17 6 23 6 23 12'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          }
+        ]
+      },
+      "Filter-Icon": {
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "Filter",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><polygon points='22 3 2 3 10 13 10 21 14 19 14 13 22 3'/></svg>"
+            },
+            "iconSize": 20,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "hover",
+            "shapeType": "custom",
+            "image": {
+              "name": "Filter",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='22 3 2 3 10 13 10 21 14 19 14 13 22 3'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "pressed",
+            "shapeType": "custom",
+            "image": {
+              "name": "Filter",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='22 3 2 3 10 13 10 21 14 19 14 13 22 3'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "selected",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "disabled",
+            "shapeType": "custom",
+            "image": {
+              "name": "Filter",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='22 3 2 3 10 13 10 21 14 19 14 13 22 3'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          }
+        ]
+      },
+      "Reset-Icon": {
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "Reset",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='23 4 23 10 17 10'/><path d='M20.49 15a9 9 0 1 1-2.12-9.36L23 10'/></svg>"
+            },
+            "iconSize": 20,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "hover",
+            "shapeType": "custom",
+            "image": {
+              "name": "Reset",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='23 4 23 10 17 10'/><path d='M20.49 15a9 9 0 1 1-2.12-9.36L23 10'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "pressed",
+            "shapeType": "custom",
+            "image": {
+              "name": "Reset",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='23 4 23 10 17 10'/><path d='M20.49 15a9 9 0 1 1-2.12-9.36L23 10'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "selected",
+            "shapeType": "custom",
+            "image": {
+              "name": "Checkmark",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          },
+          {
+            "$id": "disabled",
+            "shapeType": "custom",
+            "image": {
+              "name": "Reset",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='23 4 23 10 17 10'/><path d='M20.49 15a9 9 0 1 1-2.12-9.36L23 10'/></svg>"
+            },
+            "iconSize": 22,
+            "horizontalAlignment": "left",
+            "verticalAlignment": "middle",
+            "placement": "custom",
+            "leftMargin": 12
+          }
+        ]
+      },
+      "Logo-Icon": {
+        "icon": [
+          {
+            "show": true
+          },
+          {
+            "$id": "default",
+            "shapeType": "custom",
+            "image": {
+              "name": "Logo",
+              "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2243 762' width='2243' height='762'><path d='M319.101 123.605C287.203 123.605 256.407 128.307 227.344 137.019V332.189C251.871 311.357 283.613 298.764 318.313 298.764C395.983 298.764 458.945 361.727 458.945 439.396C458.945 517.064 395.983 580.027 318.313 580.027C245.167 580.027 185.084 524.176 178.333 452.797C177.916 448.384 177.681 443.917 177.681 439.396V156.601V88.8413C177.681 39.776 137.907 0 88.8413 0C39.776 0 0 39.776 0 88.8413V442.707V454.768C0 459.359 0.349332 463.869 1.02 468.273C14.0453 632.552 151.473 761.808 319.101 761.808C495.336 761.808 638.203 618.941 638.203 442.707C638.203 266.472 495.336 123.605 319.101 123.605Z' fill='%232166AC'/><path d='M1237.73 123.605C1205.83 123.605 1175.04 128.307 1145.97 137.019V332.189C1170.5 311.357 1202.24 298.764 1236.94 298.764C1314.61 298.764 1377.57 361.727 1377.57 439.396C1377.57 517.064 1314.61 580.027 1236.94 580.027C1163.8 580.027 1103.71 524.176 1096.96 452.797C1096.55 448.384 1096.31 443.917 1096.31 439.396V156.601V88.8413C1096.31 39.776 1056.54 0 1007.47 0C958.404 0 918.629 39.776 918.629 88.8413V442.707V454.768C918.629 459.359 918.979 463.869 919.649 468.273C932.675 632.552 1070.1 761.808 1237.73 761.808C1413.97 761.808 1556.83 618.941 1556.83 442.707C1556.83 266.472 1413.97 123.605 1237.73 123.605Z' fill='%232166AC'/><path d='M1923.81 123.605C1891.91 123.605 1861.12 128.307 1832.06 137.019V332.189C1856.58 311.357 1888.32 298.764 1923.03 298.764C2000.69 298.764 2063.66 361.727 2063.66 439.396C2063.66 517.064 2000.69 580.027 1923.03 580.027C1849.88 580.027 1789.8 524.176 1783.05 452.797C1782.63 448.384 1782.39 443.917 1782.39 439.396V156.601V88.8413C1782.39 39.776 1742.62 0 1693.55 0C1644.49 0 1604.71 39.776 1604.71 88.8413V442.707V454.768C1604.71 459.359 1605.06 463.869 1605.73 468.273C1618.76 632.552 1756.19 761.808 1923.81 761.808C2100.05 761.808 2242.91 618.941 2242.91 442.707C2242.91 266.472 2100.05 123.605 1923.81 123.605Z' fill='%232166AC'/><path d='M779.308 761.808C728.805 761.808 687.865 720.868 687.865 670.365V91.4425C687.865 40.9412 728.805 0.0012207 779.308 0.0012207C829.809 0.0012207 870.749 40.9412 870.749 91.4425V670.365C870.749 720.868 829.809 761.808 779.308 761.808Z' fill='%232166AC'/></svg>"
+            },
+            "iconSize": 40,
+            "horizontalAlignment": "center",
+            "verticalAlignment": "middle",
+            "placement": "custom"
+          }
+        ],
+        "text": [
+          {
+            "show": false
+          }
+        ],
+        "shape": [
+          {
+            "$id": "default",
+            "tileShape": "rectangleRounded",
+            "rectangleRoundedCurve": 12
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "fill": [
+          {
+            "show": false
+          }
+        ],
+        "padding": [
+          {
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "right": 0
+          }
+        ]
+      }
+    },
+    "advancedSlicerVisual": {
+      "*": {
+        "accentBar": [
+          {
+            "$id": "default",
+            "show": false,
+            "width": 0.75,
+            "position": "Left",
+            "color": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            }
+          },
+          {
+            "$id": "interaction:hover",
+            "show": false,
+            "width": 1.5,
+            "position": "Left",
+            "color": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            }
+          },
+          {
+            "$id": "selection:selected",
+            "show": false
+          }
+        ],
+        "background": [
+          {
+            "show": false,
+            "color": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "radius": 30,
+            "width": 1
+          }
+        ],
+        "fillCustom": [
+          {
+            "$id": "default",
+            "fillColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "transparency": 50
+          },
+          {
+            "$id": "interaction:hover",
+            "fillColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 80
+          },
+          {
+            "$id": "selection:selected",
+            "fillColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "layout": [
+          {
+            "style": "Cards",
+            "orientation": 2,
+            "rectangleRoundedCurve": 0,
+            "cellPadding": 0,
+            "columnCount": 4,
+            "maxTiles": 4,
+            "columnPadding": 0
+          }
+        ],
+        "outline": [
+          {
+            "show": false
+          }
+        ],
+        "padding": [
+          {
+            "bottom": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0
+          },
+          {
+            "$id": "default",
+            "paddingSelection": "Custom",
+            "bottomMargin": 0,
+            "leftMargin": 0,
+            "topMargin": 0,
+            "rightMargin": 0
+          }
+        ],
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "value": [
+          {
+            "$id": "selection:selected",
+            "bold": true,
+            "fontFamily": "Arial",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontSize": 13
+          },
+          {
+            "$id": "default",
+            "fontFamily": "Arial",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontSize": 12
+          },
+          {
+            "$id": "interaction:hover",
+            "fontFamily": "Arial",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontSize": 13
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      },
+      "Capsule": {
+        "accentBar": [
+          {
+            "$id": "default",
+            "show": false
+          },
+          {
+            "$id": "interaction:hover",
+            "show": false
+          },
+          {
+            "$id": "selection:selected",
+            "show": false
+          }
+        ],
+        "background": [
+          {
+            "$id": "default",
+            "show": false
+          },
+          {
+            "$id": "interaction:hover",
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "backgroundLight"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "selection:selected",
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "radius": 20,
+            "width": 1.5
+          }
+        ],
+        "fillCustom": [
+          {
+            "$id": "default",
+            "fillColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "transparency": 100
+          },
+          {
+            "$id": "interaction:hover",
+            "fillColor": {
+              "solid": {
+                "color": "backgroundLight"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "selection:selected",
+            "fillColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "layout": [
+          {
+            "style": "Cards",
+            "orientation": 2,
+            "autoGrid": true,
+            "rectangleRoundedCurve": 20,
+            "columnPadding": 4
+          }
+        ],
+        "outline": [
+          {
+            "show": false
+          }
+        ],
+        "padding": [
+          {
+            "$id": "default",
+            "paddingSelection": "Custom",
+            "bottomMargin": 4,
+            "leftMargin": 16,
+            "topMargin": 4,
+            "rightMargin": 16
+          }
+        ],
+        "shapeCustomRectangle": [
+          {
+            "tileShape": "rectangleRoundedByPixel",
+            "rectangleRoundedCurve": 20
+          }
+        ],
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "value": [
+          {
+            "$id": "default",
+            "fontFamily": "Arial",
+            "fontSize": 12,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "bold": false
+          },
+          {
+            "$id": "interaction:hover",
+            "fontFamily": "Arial",
+            "fontSize": 12,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "bold": false
+          },
+          {
+            "$id": "selection:selected",
+            "fontFamily": "Arial",
+            "fontSize": 12,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "bold": true
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      },
+      "Minimal": {
+        "accentBar": [
+          {
+            "$id": "default",
+            "show": false
+          },
+          {
+            "$id": "interaction:hover",
+            "show": false
+          },
+          {
+            "$id": "selection:selected",
+            "show": false
+          }
+        ],
+        "background": [
+          {
+            "$id": "default",
+            "show": false
+          },
+          {
+            "$id": "interaction:hover",
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "backgroundLight"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "selection:selected",
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "radius": 0,
+            "width": 0.8
+          }
+        ],
+        "fillCustom": [
+          {
+            "$id": "default",
+            "fillColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "transparency": 100
+          },
+          {
+            "$id": "interaction:hover",
+            "fillColor": {
+              "solid": {
+                "color": "backgroundLight"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "selection:selected",
+            "fillColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "layout": [
+          {
+            "style": "Cards",
+            "orientation": 2,
+            "autoGrid": true,
+            "rectangleRoundedCurve": 0,
+            "columnPadding": 4
+          }
+        ],
+        "outline": [
+          {
+            "show": false
+          }
+        ],
+        "padding": [
+          {
+            "$id": "default",
+            "paddingSelection": "Custom",
+            "bottomMargin": 4,
+            "leftMargin": 12,
+            "topMargin": 4,
+            "rightMargin": 12
+          }
+        ],
+        "shapeCustomRectangle": [
+          {
+            "tileShape": "rectangleRoundedByPixel",
+            "rectangleRoundedCurve": 0
+          }
+        ],
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "value": [
+          {
+            "$id": "default",
+            "fontFamily": "Arial",
+            "fontSize": 12,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "bold": false
+          },
+          {
+            "$id": "interaction:hover",
+            "fontFamily": "Arial",
+            "fontSize": 12,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "bold": false
+          },
+          {
+            "$id": "selection:selected",
+            "fontFamily": "Arial",
+            "fontSize": 12,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "bold": true
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      },
+      "Segmented Control": {
+        "accentBar": [
+          {
+            "$id": "default",
+            "show": true,
+            "width": 1,
+            "position": "Left",
+            "color": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            }
+          },
+          {
+            "$id": "interaction:hover",
+            "show": true,
+            "width": 1,
+            "position": "Left",
+            "color": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            }
+          },
+          {
+            "$id": "selection:selected",
+            "show": false
+          }
+        ],
+        "background": [
+          {
+            "$id": "default",
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "interaction:hover",
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "backgroundLight"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "selection:selected",
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "radius": 30,
+            "width": 1
+          }
+        ],
+        "layout": [
+          {
+            "style": "Cards",
+            "orientation": 2,
+            "autoGrid": true,
+            "rectangleRoundedCurve": 30,
+            "columnPadding": 0
+          }
+        ],
+        "outline": [
+          {
+            "show": true,
+            "lineColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "weight": 1
+          }
+        ],
+        "padding": [
+          {
+            "$id": "default",
+            "paddingSelection": "Custom",
+            "bottomMargin": 0,
+            "leftMargin": 0,
+            "topMargin": 0,
+            "rightMargin": 0
+          }
+        ],
+        "shapeCustomRectangle": [
+          {
+            "tileShape": "rectangleRoundedByPixel",
+            "rectangleRoundedCurve": 30
+          }
+        ],
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "value": [
+          {
+            "$id": "default",
+            "fontFamily": "Arial",
+            "fontSize": 12,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "interaction:hover",
+            "fontFamily": "Arial",
+            "fontSize": 12,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "selection:selected",
+            "bold": true,
+            "fontFamily": "Arial",
+            "fontSize": 12,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "azureMap": {
+      "*": {
+        "background": [
+          {
+            "show": false
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "mapControls": [
+          {
+            "defaultStyle": "grayscale_light",
+            "showNavigationControls": false,
+            "showStylePicker": false
+          }
+        ],
+        "padding": [
+          {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          }
+        ],
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "barChart": {
+      "*": {
+        "legend": [
+          {
+            "show": false,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8
+          }
+        ],
+        "totals": [
+          {
+            "show": false
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTitle": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "y2Axis": [
+          {
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totalLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      },
+      "Matched borders": {
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTitle": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "legend": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "y2Axis": [
+          {
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totalLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      },
+      "Total labels": {
+        "labels": [
+          {
+            "show": false,
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totals": [
+          {
+            "show": true
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTitle": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "legend": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "y2Axis": [
+          {
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totalLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "bookmarkNavigator": {
+      "*": {
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "dropShadow": [
+          {
+            "$id": "default",
+            "show": false
+          }
+        ],
+        "fill": [
+          {
+            "$id": "default",
+            "fillColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "hover",
+            "fillColor": {
+              "solid": {
+                "color": "#D9EAE6"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "selected",
+            "fillColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "layout": [
+          {
+            "orientation": 2,
+            "cellPadding": 6
+          }
+        ],
+        "outline": [
+          {
+            "$id": "default",
+            "show": true,
+            "lineColor": {
+              "solid": {
+                "color": "foreground"
+              }
+            },
+            "weight": 1
+          },
+          {
+            "$id": "hover",
+            "show": true,
+            "lineColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "weight": 1
+          },
+          {
+            "$id": "selected",
+            "show": true,
+            "lineColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "weight": 1
+          }
+        ],
+        "padding": [
+          {
+            "top": 2,
+            "bottom": 2,
+            "left": 2,
+            "right": 2
+          }
+        ],
+        "shape": [
+          {
+            "$id": "default",
+            "tileShape": "rectangleRounded",
+            "rectangleRoundedCurve": 16
+          }
+        ],
+        "text": [
+          {
+            "$id": "default",
+            "fontSize": 11,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "hover",
+            "fontSize": 11,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "selected",
+            "fontSize": 11,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "cardVisual": {
+      "*": {
+        "accentBar": [
+          {
+            "$id": "default",
+            "show": false
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#D8E2E0"
+              }
+            },
+            "radius": 9,
+            "width": 0
+          }
+        ],
+        "divider": [
+          {
+            "$id": "default",
+            "show": false
+          }
+        ],
+        "image": [
+          {
+            "$id": "default",
+            "show": false
+          }
+        ],
+        "label": [
+          {
+            "$id": "default",
+            "position": "aboveValue",
+            "fontSize": 12.5,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "bold": false,
+            "fontFamily": "Arial",
+            "fontWeight": "normal"
+          }
+        ],
+        "layout": [
+          {
+            "calloutSize": 60
+          },
+          {
+            "$id": "default",
+            "paddingUniform": 0
+          }
+        ],
+        "outline": [
+          {
+            "$id": "default",
+            "show": false
+          }
+        ],
+        "padding": [
+          {
+            "top": 25,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          }
+        ],
+        "referenceLabel": [
+          {
+            "$id": "default",
+            "show": true,
+            "backgroundShow": false,
+            "backgroundColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "backgroundTransparency": 80,
+            "paddingUniform": 0
+          }
+        ],
+        "referenceLabelLayout": [
+          {
+            "$id": "default",
+            "style": "sentence",
+            "valueArea": 26,
+            "outerPadding": 0,
+            "horizontalAlignment": "center",
+            "labelSpace": 10
+          }
+        ],
+        "referenceLabelTitle": [
+          {
+            "$id": "default",
+            "show": true,
+            "titleFontSize": 12,
+            "titleTransparency": 0,
+            "titleFontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "referenceLabelValue": [
+          {
+            "$id": "default",
+            "show": true,
+            "valueBold": true,
+            "valueFontSize": 12,
+            "valueTransparency": 0,
+            "valueFontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "referenceLabelDetail": [
+          {
+            "$id": "default",
+            "show": true,
+            "detailFontSize": 12,
+            "detailBold": true,
+            "detailTransparency": 0,
+            "detailFontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "shapeCustomRectangle": [
+          {
+            "$id": "default",
+            "tileShape": "rectangleRounded",
+            "rectangleRoundedCurve": 7
+          }
+        ],
+        "spacing": [
+          {
+            "$id": "default",
+            "verticalSpacing": 8
+          }
+        ],
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "value": [
+          {
+            "$id": "default",
+            "fontSize": 38,
+            "horizontalAlignment": "center",
+            "bold": true,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontFamily": "Arial"
+          }
+        ]
+      },
+      "Multi-Value Card": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "backgroundLight"
+              }
+            },
+            "transparency": 100
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "radius": 10,
+            "width": 0
+          }
+        ],
+        "divider": [
+          {
+            "$id": "default",
+            "show": true,
+            "dividerColor": {
+              "solid": {
+                "color": "#D8E2E0"
+              }
+            },
+            "dividerLineStyle": "solid",
+            "dividerWidth": 1,
+            "dividerTransparency": 0
+          }
+        ],
+        "label": [
+          {
+            "$id": "default",
+            "position": "aboveValue",
+            "fontSize": 11,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "bold": false,
+            "fontFamily": "Arial"
+          }
+        ],
+        "layout": [
+          {
+            "calloutSize": 55,
+            "style": "Cards",
+            "gap": 16,
+            "orientation": 0,
+            "rowPadding": 12,
+            "cellPadding": 14,
+            "columnPadding": 14,
+            "columnCount": 6,
+            "rowCount": 1
+          }
+        ],
+        "padding": [
+          {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          }
+        ],
+        "referenceLabelDetail": [
+          {
+            "$id": "default",
+            "show": false
+          }
+        ],
+        "referenceLabelTitle": [
+          {
+            "$id": "default",
+            "show": true,
+            "titleFontSize": 12,
+            "titleFontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleBold": true
+          }
+        ],
+        "referenceLabelValue": [
+          {
+            "$id": "default",
+            "show": true,
+            "valueBold": true,
+            "valueFontSize": 13,
+            "valueFontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "shapeCustomRectangle": [
+          {
+            "$id": "default",
+            "tileShape": "rectangleRounded",
+            "rectangleRoundedCurve": 8
+          }
+        ],
+        "spacing": [
+          {
+            "$id": "default",
+            "verticalSpacing": 12,
+            "horizontalSpacing": 12
+          }
+        ],
+        "value": [
+          {
+            "$id": "default",
+            "fontSize": 26,
+            "bold": true,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "horizontalAlignment": "center"
+          }
+        ]
+      },
+      "Small Label": {
+        "label": [
+          {
+            "$id": "default",
+            "position": "aboveValue",
+            "fontSize": 11,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "bold": false,
+            "fontFamily": "Arial",
+            "fontWeight": "normal"
+          }
+        ],
+        "layout": [
+          {
+            "calloutSize": 60
+          },
+          {
+            "$id": "default",
+            "paddingUniform": 0
+          }
+        ],
+        "padding": [
+          {
+            "top": 5,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          }
+        ],
+        "value": [
+          {
+            "$id": "default",
+            "fontSize": 24,
+            "horizontalAlignment": "center",
+            "bold": true,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontFamily": "Arial"
+          }
+        ]
+      },
+      "AsterWorks KPI Card": {
+        "accentBar": [
+          {
+            "$id": "default",
+            "show": true,
+            "width": 4,
+            "position": "Top",
+            "color": {
+              "solid": {
+                "color": "#72B7AD"
+              }
+            }
+          }
+        ],
+        "background": [
+          {
+            "show": false,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": false,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "radius": 7,
+            "width": 0
+          }
+        ],
+        "divider": [
+          {
+            "$id": "default",
+            "show": true,
+            "dividerIgnorePadding": true,
+            "dividerLineStyle": "dashed",
+            "dividerTransparency": 30
+          }
+        ],
+        "image": [
+          {
+            "$id": "default",
+            "show": true,
+            "position": "Left",
+            "padding": 10,
+            "imageAreaSize": 15
+          }
+        ],
+        "label": [
+          {
+            "$id": "default",
+            "position": "aboveValue",
+            "fontSize": 14,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "bold": false,
+            "fontFamily": "Arial"
+          }
+        ],
+        "layout": [
+          {
+            "calloutSize": 60
+          },
+          {
+            "$id": "default",
+            "paddingUniform": 0
+          }
+        ],
+        "outline": [
+          {
+            "$id": "default",
+            "show": false
+          }
+        ],
+        "padding": [
+          {
+            "top": 4,
+            "bottom": 4,
+            "left": 4,
+            "right": 4
+          }
+        ],
+        "referenceLabel": [
+          {
+            "$id": "default",
+            "show": true,
+            "backgroundShow": false,
+            "backgroundTransparency": 100,
+            "paddingIndividual": true,
+            "paddingTop": 0,
+            "paddingBottom": 0
+          }
+        ],
+        "referenceLabelLayout": [
+          {
+            "$id": "default",
+            "style": "sentence",
+            "outerPadding": 3,
+            "horizontalAlignment": "center",
+            "labelSpace": 0
+          }
+        ],
+        "referenceLabelTitle": [
+          {
+            "$id": "default",
+            "show": true,
+            "titleFontSize": 9,
+            "titleTransparency": 0,
+            "titleFontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "referenceLabelValue": [
+          {
+            "$id": "default",
+            "show": true,
+            "valueBold": false,
+            "valueFontSize": 9,
+            "valueTransparency": 0,
+            "valueFontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "valueDisplayUnits": 1
+          }
+        ],
+        "referenceLabelDetail": [
+          {
+            "$id": "default",
+            "show": true,
+            "detailFontSize": 9,
+            "detailBold": true,
+            "detailTransparency": 0,
+            "detailFontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "shapeCustomRectangle": [
+          {
+            "$id": "default",
+            "tileShape": "rectangleRounded",
+            "rectangleRoundedCurve": 7
+          }
+        ],
+        "spacing": [
+          {
+            "$id": "default",
+            "verticalSpacing": 0
+          }
+        ],
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "value": [
+          {
+            "$id": "default",
+            "fontSize": 25,
+            "horizontalAlignment": "left",
+            "bold": true,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontFamily": "Arial",
+            "labelDisplayUnits": 1
+          }
+        ],
+        "fillCustom": [
+          {
+            "$id": "default",
+            "show": true,
+            "fillColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "clusteredColumnChart": {
+      "*": {
+        "labels": [
+          {
+            "show": true,
+            "labelPosition": "Above",
+            "labelPrecision": 0,
+            "optimizeLabelDisplay": true,
+            "labelDisplayUnits": 1,
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "show": false
+          }
+        ],
+        "legend": [
+          {
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      },
+      "Matched borders": {
+        "legend": [
+          {
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "columnChart": {
+      "*": {
+        "labels": [
+          {
+            "show": true,
+            "labelPosition": "Above",
+            "labelPrecision": 1,
+            "optimizeLabelDisplay": true,
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "show": false,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTitle": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "legend": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "y2Axis": [
+          {
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totalLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      },
+      "Matched borders": {
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTitle": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "legend": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "y2Axis": [
+          {
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totalLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "donutChart": {
+      "*": {
+        "labels": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "legend": [
+          {
+            "show": false,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8
+          }
+        ],
+        "slices": [
+          {
+            "innerRadius": 60
+          }
+        ],
+        "value": [
+          {
+            "labelDisplayUnits": 1,
+            "labelPrecision": 0,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTitle": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "y2Axis": [
+          {
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totalLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "label": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      },
+      "Matched borders": {
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTitle": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "legend": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "y2Axis": [
+          {
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totalLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "value": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "label": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "filledMap": {
+      "*": {
+        "mapStyles": [
+          {
+            "mapTheme": "grayscale"
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "image": {
+      "*": {
+        "background": [
+          {
+            "show": false
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "lineChart": {
+      "*": {
+        "labels": [
+          {
+            "show": false,
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "background"
+              }
+            }
+          }
+        ],
+        "border": [
+          {
+            "color": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "radius": 9,
+            "show": true,
+            "width": 0.5
+          }
+        ],
+        "categoryAxis": [
+          {
+            "showAxisTitle": false,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "preferredCategoryWidth": 33,
+            "gridlineShow": true,
+            "gridlineColor": {
+              "solid": {
+                "color": "#D8E2E0"
+              }
+            },
+            "gridlineStyle": "dashed",
+            "gridlineThickness": 1,
+            "fontFamily": "Arial",
+            "fontSize": 11,
+            "show": true,
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "showAxisTitle": false,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "gridlineShow": true,
+            "gridlineColor": {
+              "solid": {
+                "color": "#D8E2E0"
+              }
+            },
+            "gridlineStyle": "dashed",
+            "gridlineThickness": 1,
+            "fontFamily": "Arial",
+            "fontSize": 11,
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "lineStyles": [
+          {
+            "lineChartType": "smooth",
+            "strokeWidth": 3,
+            "areaShow": false,
+            "areaMatchStrokeColor": false,
+            "showMarker": true,
+            "markerSize": 6.5,
+            "markerShape": "circle"
+          }
+        ],
+        "markers": [
+          {
+            "borderShow": true,
+            "borderColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "borderWidth": 4,
+            "borderColorMatchFill": false,
+            "borderTransparency": 50
+          }
+        ],
+        "padding": [
+          {
+            "top": 20
+          },
+          {
+            "bottom": 20
+          },
+          {
+            "left": 20
+          },
+          {
+            "right": 20
+          }
+        ],
+        "spacing": [
+          {
+            "customizeSpacing": true,
+            "spaceBelowTitle": 12,
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "legend": [
+          {
+            "position": "BottomRight",
+            "showTitle": false,
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontFamily": "Arial",
+            "show": false
+          }
+        ],
+        "y2Axis": [
+          {
+            "secFontFamily": "Arial",
+            "secFontSize": 11,
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secShowAxisTitle": false,
+            "show": true,
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "title": [
+          {
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "show": true
+          }
+        ],
+        "subTitle": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totalLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      },
+      "Data labels": {
+        "labels": [
+          {
+            "show": true,
+            "optimizeLabelDisplay": true,
+            "labelDensity": 10,
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "show": true,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTitle": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "legend": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "y2Axis": [
+          {
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totalLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      },
+      "Matched borders": {
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTitle": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "legend": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "y2Axis": [
+          {
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totalLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F2F6F5"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "displayArea": [
+          {
+            "verticalAlignment": "Middle"
+          }
+        ],
+        "filterCard": [
+          {
+            "$id": "Available",
+            "inputBoxColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "backgroundColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "foregroundColor": {
+              "solid": {
+                "color": "#242424"
+              }
+            }
+          },
+          {
+            "$id": "Applied",
+            "inputBoxColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "backgroundColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "foregroundColor": {
+              "solid": {
+                "color": "#242424"
+              }
+            }
+          }
+        ],
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "backgroundLight"
+              }
+            },
+            "transparency": 50
+          }
+        ],
+        "outspacePane": [
+          {
+            "backgroundColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "foregroundColor": {
+              "solid": {
+                "color": "#242424"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "pageNavigator": {
+      "*": {
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "dropShadow": [
+          {
+            "$id": "default",
+            "show": false
+          }
+        ],
+        "fill": [
+          {
+            "$id": "default",
+            "fillColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "hover",
+            "fillColor": {
+              "solid": {
+                "color": "#D9EAE6"
+              }
+            },
+            "transparency": 0
+          },
+          {
+            "$id": "selected",
+            "fillColor": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "layout": [
+          {
+            "orientation": 2,
+            "cellPadding": 6
+          }
+        ],
+        "outline": [
+          {
+            "$id": "default",
+            "show": false
+          }
+        ],
+        "padding": [
+          {
+            "top": 2,
+            "bottom": 2,
+            "left": 2,
+            "right": 2
+          }
+        ],
+        "shape": [
+          {
+            "$id": "default",
+            "tileShape": "rectangleRounded",
+            "rectangleRoundedCurve": 12
+          }
+        ],
+        "text": [
+          {
+            "$id": "default",
+            "fontSize": 11,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "hover",
+            "fontSize": 11,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "$id": "selected",
+            "fontSize": 11,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "pieChart": {
+      "*": {
+        "labels": [
+          {
+            "show": true
+          }
+        ],
+        "legend": [
+          {
+            "show": false,
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      },
+      "Matched borders": {
+        "legend": [
+          {
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "pivotTable": {
+      "*": {
+        "columnHeaders": [
+          {
+            "backColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontSize": 12,
+            "bold": true,
+            "autoSizeColumnWidth": true
+          }
+        ],
+        "grid": [
+          {
+            "showBorder": false,
+            "gridHorizontal": true,
+            "gridVertical": true,
+            "rowPadding": 8,
+            "outlineColor": {
+              "solid": {
+                "color": "#D8E2E0"
+              }
+            },
+            "outlineStyle": 0,
+            "outlineWeight": 0
+          }
+        ],
+        "rowHeaders": [
+          {
+            "backColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontSize": 12,
+            "bold": true,
+            "wordWrap": false
+          }
+        ],
+        "subTotals": [
+          {
+            "show": true,
+            "bold": true,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "outlineTop": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "outlineTopWeight": 1,
+            "applyToHeaders": true
+          }
+        ],
+        "title": [
+          {
+            "show": false,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "total": [
+          {
+            "show": true,
+            "bold": true,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": "backgroundLight"
+              }
+            },
+            "outlineTop": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "outlineTopWeight": 2,
+            "applyToHeaders": true
+          }
+        ],
+        "values": [
+          {
+            "backColorPrimary": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": "#F2F6F5"
+              }
+            },
+            "fontColorPrimary": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontSize": 12,
+            "wordWrap": false
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "ribbonChart": {
+      "*": {
+        "legend": [
+          {
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      },
+      "Matched borders": {
+        "dataPoint": [
+          {
+            "fillTransparency": 20
+          }
+        ],
+        "legend": [
+          {
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "scatterChart": {
+      "*": {
+        "categoryAxis": [
+          {
+            "showAxisTitle": true,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontFamily": "Arial"
+          }
+        ],
+        "categoryLabels": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "legend": [
+          {
+            "show": true,
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "showAxisTitle": true,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontFamily": "Arial"
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "shape": {
+      "*": {
+        "background": [
+          {
+            "show": true
+          }
+        ],
+        "fill": [
+          {
+            "show": false
+          }
+        ],
+        "outline": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "slicer": {
+      "*": {
+        "background": [
+          {
+            "show": false
+          }
+        ],
+        "header": [
+          {
+            "show": false,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontFamily": "Arial",
+            "textSize": 11
+          }
+        ],
+        "items": [
+          {
+            "textSize": 11.5,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "background": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "padding": 6
+          }
+        ],
+        "padding": [
+          {
+            "top": 0
+          },
+          {
+            "bottom": 0
+          },
+          {
+            "left": 0
+          },
+          {
+            "right": 0
+          }
+        ],
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "selectionIcon": [
+          {
+            "color": {
+              "solid": {
+                "color": "foreground"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "stackedAreaChart": {
+      "*": {
+        "legend": [
+          {
+            "show": true,
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "columnHeaders": [
+          {
+            "backColor": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontSize": 12,
+            "bold": true,
+            "autoSizeColumnWidth": true,
+            "outlineStyle": 4,
+            "outlineWeight": 2,
+            "outlineColor": {
+              "solid": {
+                "color": "#72B7AD"
+              }
+            }
+          }
+        ],
+        "grid": [
+          {
+            "gridHorizontal": false,
+            "rowPadding": 8,
+            "outlineColor": {
+              "solid": {
+                "color": "#D8E2E0"
+              }
+            },
+            "outlineStyle": 0,
+            "outlineWeight": 0,
+            "gridVertical": false,
+            "gridHorizontalColor": {
+              "solid": {
+                "color": "#72B7AD"
+              }
+            }
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "text": "Table title",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "bold": false,
+            "fontSize": 20
+          }
+        ],
+        "totals": [
+          {
+            "show": false,
+            "bold": true,
+            "backColor": {
+              "solid": {
+                "color": "backgroundLight"
+              }
+            },
+            "outlineTop": {
+              "solid": {
+                "color": "tableAccent"
+              }
+            },
+            "outlineTopWeight": 1.5,
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "values": [
+          {
+            "backColorPrimary": {
+              "solid": {
+                "color": "background"
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": "#F2F6F5"
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontSize": 12,
+            "wordWrap": false,
+            "fontColorPrimary": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "rowHeaders": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "total": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTotals": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      },
+      "center-aligned": {
+        "columnHeaders": [
+          {
+            "alignment": "Center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totals": [
+          {
+            "alignment": "Center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "values": [
+          {
+            "alignment": "Center",
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontColorPrimary": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "rowHeaders": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "total": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTotals": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "textbox": {
+      "*": {
+        "background": [
+          {
+            "show": false
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "padding": [
+          {
+            "top": 0
+          },
+          {
+            "bottom": 0
+          },
+          {
+            "left": 0
+          },
+          {
+            "right": 0
+          }
+        ],
+        "text": [
+          {
+            "fontFamily": "Arial",
+            "fontSize": 11,
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "waterfallChart": {
+      "*": {
+        "legend": [
+          {
+            "show": false,
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8,
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ]
+      }
+    },
+    "lineClusteredColumnComboChart": {
+      "*": {
+        "spacing": [
+          {
+            "spaceAbovePlotArea": 10
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "subTitle": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "legend": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "position": "BottomRight",
+            "fontFamily": "Arial",
+            "fontSize": 8
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "y2Axis": [
+          {
+            "secLabelColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            },
+            "secTitleColor": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ],
+        "totalLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000000"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

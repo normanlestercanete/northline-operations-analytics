@@ -1,0 +1,85 @@
+table Shipments
+	lineageTag: bb2dd36c-f0ab-4158-a4f5-bd853128e6c3
+
+	column ShipmentID
+		dataType: int64
+		formatString: #,0
+		lineageTag: c0d52f04-7957-4e0c-97e6-fc061826ffe5
+		summarizeBy: none
+		sourceColumn: ShipmentID
+
+	column OrderID
+		dataType: int64
+		formatString: #,0
+		lineageTag: f05596e8-3fdb-48fc-8cbf-b0e9bf7011d6
+		summarizeBy: none
+		sourceColumn: OrderID
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 830c8898-0a61-464e-9671-38d2aefc0f56
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WarehouseID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3d10caf5-996d-423a-81b3-2ed6477bf380
+		summarizeBy: none
+		sourceColumn: WarehouseID
+
+	column ProductID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 87ee90e2-5387-4ec1-8132-ef592a716dcd
+		summarizeBy: none
+		sourceColumn: ProductID
+
+	column Units
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5a8ca534-070e-4e73-b18c-77d59768562f
+		summarizeBy: none
+		sourceColumn: Units
+
+	column COGSUSD
+		dataType: decimal
+		formatString: $#,0.00
+		lineageTag: 73474705-6181-42c2-ba76-1d2428298379
+		summarizeBy: none
+		sourceColumn: COGSUSD
+
+	column RevenueUSD
+		dataType: decimal
+		formatString: $#,0.00
+		lineageTag: 9ef76de0-546c-48b3-942c-5c4af845a5af
+		summarizeBy: none
+		sourceColumn: RevenueUSD
+
+	column CycleUnitDays
+		dataType: int64
+		formatString: #,0
+		lineageTag: e7bc5497-702f-4d6f-9d18-6ae3a02bcdea
+		summarizeBy: none
+		sourceColumn: CycleUnitDays
+
+	column OnTimeUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: df653a47-ca2a-4091-98fe-5bfbdc376d76
+		summarizeBy: none
+		sourceColumn: OnTimeUnits
+
+	partition Shipments = m
+		mode: import
+		source =
+				let
+				 Source = Csv.Document(File.Contents(DataFolder & "Shipments.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				 Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				 Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				 Typed = Table.TransformColumnTypes(Nulls, {{"ShipmentID", Int64.Type}, {"OrderID", Int64.Type}, {"Date", type date}, {"WarehouseID", Int64.Type}, {"ProductID", Int64.Type}, {"Units", Int64.Type}, {"COGSUSD", Currency.Type}, {"RevenueUSD", Currency.Type}, {"CycleUnitDays", Int64.Type}, {"OnTimeUnits", Int64.Type}}, "en-US")
+				in Typed
+

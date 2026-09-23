@@ -1,0 +1,7 @@
+.pbi/
+**/.pbi/
+*.pbix
+*.pbit
+__pycache__/
+*.pyc
+*.log

@@ -1,0 +1,89 @@
+table Purchases
+	lineageTag: 44987524-5b4d-4da0-a4cf-a475805032d8
+
+	column PurchaseID
+		dataType: int64
+		formatString: #,0
+		lineageTag: c15b7c98-f63a-4ea3-b0b0-acb59849dc95
+		summarizeBy: none
+		sourceColumn: PurchaseID
+
+	column OrderDate
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 26ffb30d-936d-4990-b630-f80d68772f8e
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PromisedDate
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 7b97bdae-af12-42fc-9bd3-a1ac1e05e20d
+		summarizeBy: none
+		sourceColumn: PromisedDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WarehouseID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 158a5f6f-9025-479b-a3ff-9859ed6c0307
+		summarizeBy: none
+		sourceColumn: WarehouseID
+
+	column ProductID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 138e4667-1d7b-423e-aee2-865412a506f9
+		summarizeBy: none
+		sourceColumn: ProductID
+
+	column SupplierID
+		dataType: int64
+		formatString: #,0
+		lineageTag: c9aae87a-0b32-48b3-aa41-c953dba3ce97
+		summarizeBy: none
+		sourceColumn: SupplierID
+
+	column OrderedUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: dadf4eba-ce6b-472a-9484-69ea38129509
+		summarizeBy: none
+		sourceColumn: OrderedUnits
+
+	column ReceivedUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6db9f83d-c8bc-4df5-afcb-d133caf22423
+		summarizeBy: none
+		sourceColumn: ReceivedUnits
+
+	column ReceiptDate
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 09031187-89ce-4f54-bc28-39bcb820ea5b
+		summarizeBy: none
+		sourceColumn: ReceiptDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OnTimeFull
+		dataType: int64
+		formatString: #,0
+		lineageTag: 10f93ef9-38ee-491c-896b-699a475204a0
+		summarizeBy: none
+		sourceColumn: OnTimeFull
+
+	partition Purchases = m
+		mode: import
+		source =
+				let
+				 Source = Csv.Document(File.Contents(DataFolder & "Purchases.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				 Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				 Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				 Typed = Table.TransformColumnTypes(Nulls, {{"PurchaseID", Int64.Type}, {"OrderDate", type date}, {"PromisedDate", type date}, {"WarehouseID", Int64.Type}, {"ProductID", Int64.Type}, {"SupplierID", Int64.Type}, {"OrderedUnits", Int64.Type}, {"ReceivedUnits", Int64.Type}, {"ReceiptDate", type date}, {"OnTimeFull", Int64.Type}}, "en-US")
+				in Typed
+

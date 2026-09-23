@@ -1,0 +1,102 @@
+table Orders
+	lineageTag: 5b006d76-3d0d-48ed-82af-9e468745e4f8
+
+	column OrderID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6f3e9815-437e-4c2e-8296-b4a53153190c
+		summarizeBy: none
+		sourceColumn: OrderID
+
+	column OrderDate
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 1114540c-0085-4d63-a190-1a2caa04f36d
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PromisedDate
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 819db2a2-a803-41b3-97e5-4ae20fda1d5e
+		summarizeBy: none
+		sourceColumn: PromisedDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WarehouseID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9774a438-06f2-42d7-bf85-9ad53417b57f
+		summarizeBy: none
+		sourceColumn: WarehouseID
+
+	column ProductID
+		dataType: int64
+		formatString: #,0
+		lineageTag: c88052b0-ad22-495d-80a3-0f0289e00f22
+		summarizeBy: none
+		sourceColumn: ProductID
+
+	column Priority
+		dataType: string
+		lineageTag: cd23000f-f08e-4df3-808b-d2c77fd8dded
+		summarizeBy: none
+		sourceColumn: Priority
+
+	column OrderedUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: b864c3e9-13a0-4684-b88f-1e4a9f3578a5
+		summarizeBy: none
+		sourceColumn: OrderedUnits
+
+	column ShippedUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: 8d2d201d-1a79-44fa-ae48-bb23c45d0e84
+		summarizeBy: none
+		sourceColumn: ShippedUnits
+
+	column CompleteDate
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 3f663d28-79f6-4136-a076-c769c4ad8c13
+		summarizeBy: none
+		sourceColumn: CompleteDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UnitPriceUSD
+		dataType: decimal
+		formatString: $#,0.00
+		lineageTag: 6acf2e56-ffa1-4544-9b93-c361667ecea0
+		summarizeBy: none
+		sourceColumn: UnitPriceUSD
+
+	column FulfilledByDueMonthUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: bd0c12b1-307f-43f1-a15e-09c002c9a7f6
+		summarizeBy: none
+		sourceColumn: FulfilledByDueMonthUnits
+
+	column OnTimeFull
+		dataType: int64
+		formatString: #,0
+		lineageTag: fabca02d-cfe9-419e-8f24-3110ccae0093
+		summarizeBy: none
+		sourceColumn: OnTimeFull
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				 Source = Csv.Document(File.Contents(DataFolder & "Orders.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				 Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				 Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				 Typed = Table.TransformColumnTypes(Nulls, {{"OrderID", Int64.Type}, {"OrderDate", type date}, {"PromisedDate", type date}, {"WarehouseID", Int64.Type}, {"ProductID", Int64.Type}, {"Priority", type text}, {"OrderedUnits", Int64.Type}, {"ShippedUnits", Int64.Type}, {"CompleteDate", type date}, {"UnitPriceUSD", Currency.Type}, {"FulfilledByDueMonthUnits", Int64.Type}, {"OnTimeFull", Int64.Type}}, "en-US")
+				in Typed
+

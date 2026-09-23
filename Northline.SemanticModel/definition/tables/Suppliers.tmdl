@@ -1,0 +1,39 @@
+table Suppliers
+	lineageTag: 8050d613-57d0-4864-9f90-3512b6ac089f
+
+	column SupplierID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3746190f-445c-46ae-8c9a-dce8f31b1712
+		summarizeBy: none
+		sourceColumn: SupplierID
+
+	column Supplier
+		dataType: string
+		lineageTag: 8c586874-d3a9-4f2d-9ac0-b4d6fc35d40a
+		summarizeBy: none
+		sourceColumn: Supplier
+
+	column Origin
+		dataType: string
+		lineageTag: 10e86d2d-581c-4708-85d5-679ae3999b82
+		summarizeBy: none
+		sourceColumn: Origin
+
+	column ContractLeadDays
+		dataType: int64
+		formatString: #,0
+		lineageTag: 67c18cef-0285-490e-9735-1976bcee599d
+		summarizeBy: none
+		sourceColumn: ContractLeadDays
+
+	partition Suppliers = m
+		mode: import
+		source =
+				let
+				 Source = Csv.Document(File.Contents(DataFolder & "Suppliers.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				 Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				 Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				 Typed = Table.TransformColumnTypes(Nulls, {{"SupplierID", Int64.Type}, {"Supplier", type text}, {"Origin", type text}, {"ContractLeadDays", Int64.Type}}, "en-US")
+				in Typed
+

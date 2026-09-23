@@ -1,0 +1,1402 @@
+table Metrics
+	lineageTag: 1e803e06-6474-414b-a202-6fb671649d1a
+
+	measure 'Selected Month' = SELECTEDVALUE ( 'Reporting Month'[MonthStart], MAX ( 'Reporting Month'[MonthStart] ) )
+		formatString: yyyy-MM-dd
+		displayFolder: Performance
+		lineageTag: d05a4a96-ec05-40fb-878f-cbc24ba7d8d1
+
+	measure 'Shipped Units Base' = SUM ( Shipments[Units] )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: a0b1df0f-abf6-4f22-9628-a40cecd780cf
+
+	measure 'Shipped Units' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Shipped Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: 6755ee0a-a951-4af2-aa26-291861c94e4c
+
+	measure 'Shipped Units Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Shipped Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 25fdbb0c-52e9-4381-944d-c4576e85d4a0
+
+	measure 'Shipped Units Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Shipped Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: f61e7b73-c6b0-4152-8d35-2b84a0896f78
+
+	measure 'Shipped Units Change' =
+			VAR P = [Shipped Units Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Shipped Units] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Shipped Units] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: a1af4644-03f8-4a00-a323-b7a24e50c888
+
+	measure 'Shipped Units Color' =
+			VAR P = [Shipped Units Previous]
+			VAR Delta = ( [Shipped Units] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Shipped Units] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 1b4ba77c-eaa9-44ff-8032-881da51a0c18
+
+	measure 'Shipment COGS Base' = SUM ( Shipments[COGSUSD] )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 70061362-610c-4989-b30e-b596db024ecd
+
+	measure 'Shipment COGS' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Shipment COGS Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: 0eefba0a-e264-41c3-aaad-6e67a92bc2a7
+
+	measure 'Shipment COGS Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Shipment COGS Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: cd22691c-fadc-40e9-9dc5-70ffe53d169a
+
+	measure 'Shipment COGS Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Shipment COGS Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 156cb1ab-306e-48a3-a6dd-71a49dd8be71
+
+	measure 'Shipment COGS Change' =
+			VAR P = [Shipment COGS Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Shipment COGS] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Shipment COGS] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 6e7a2dda-2e58-4d4c-8cc7-135b3218dee8
+
+	measure 'Shipment COGS Color' =
+			VAR P = [Shipment COGS Previous]
+			VAR Delta = ( [Shipment COGS] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Shipment COGS] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 11bcb9ce-510f-407b-b301-2e8982789c72
+
+	measure 'Due Orders Base' = COUNTROWS ( Orders )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: e929eb73-c217-4187-818c-8182337752f4
+
+	measure 'Due Orders' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Due Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: b7c16b8a-8d31-420e-891c-02bc85d0d926
+
+	measure 'Due Orders Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Due Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 7590a55d-26ed-4b5f-9bc8-99069f5905a1
+
+	measure 'Due Orders Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Due Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 732b105d-2875-4dce-8982-3ab948b72860
+
+	measure 'Due Orders Change' =
+			VAR P = [Due Orders Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Due Orders] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Due Orders] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: a4729574-a5d0-443e-9862-119c028bd80c
+
+	measure 'Due Orders Color' =
+			VAR P = [Due Orders Previous]
+			VAR Delta = ( [Due Orders] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Due Orders] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: dd566719-1e0b-40f9-818b-8fcfe8416e9e
+
+	measure 'Due Units Base' = SUM ( Orders[OrderedUnits] )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 908672a9-6021-4b9c-b227-ad6598f0b408
+
+	measure 'Due Units' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Due Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: f039cfa5-fd2c-4296-898f-568868f700fd
+
+	measure 'Due Units Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Due Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: a1e4b647-4b5f-4807-876b-1aba5b84db22
+
+	measure 'Due Units Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Due Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 6e4e1a78-07d1-45c6-b250-b0fd42aac351
+
+	measure 'Due Units Change' =
+			VAR P = [Due Units Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Due Units] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Due Units] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 04c37f14-f423-43c5-b545-95b70dadae97
+
+	measure 'Due Units Color' =
+			VAR P = [Due Units Previous]
+			VAR Delta = ( [Due Units] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Due Units] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 5d93a88f-e372-45f0-95c6-b9aafa9bda47
+
+	measure 'Due Month Fill Rate Base' = DIVIDE ( SUM ( Orders[FulfilledByDueMonthUnits] ), SUM ( Orders[OrderedUnits] ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: cebd8b05-7332-49a2-b2e3-52c08f534333
+
+	measure 'Due Month Fill Rate' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Due Month Fill Rate Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Performance
+		lineageTag: 82027dea-b211-4368-bbde-0e476ae789d1
+
+	measure 'Due Month Fill Rate Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Due Month Fill Rate Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 22623423-1a3b-44bd-9509-1dd4f7181657
+
+	measure 'Due Month Fill Rate Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Due Month Fill Rate Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 2575ac9e-7ff9-470a-ac16-c577ed924b67
+
+	measure 'Due Month Fill Rate Change' =
+			VAR P = [Due Month Fill Rate Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Due Month Fill Rate] ), "N/A", FORMAT ( ( [Due Month Fill Rate] - P ) * 100, "+0.0;-0.0;0.0" ) & " pp" )
+		displayFolder: Supporting
+		lineageTag: ec64ccca-4fc1-482e-b242-e9052f22d975
+
+	measure 'Due Month Fill Rate Color' =
+			VAR P = [Due Month Fill Rate Previous]
+			VAR Delta = ( [Due Month Fill Rate] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Due Month Fill Rate] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 8796d478-c819-4f12-a348-966cd6f94e00
+
+	measure 'On Time In Full Base' = DIVIDE ( SUM ( Orders[OnTimeFull] ), COUNTROWS ( Orders ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 3c6b1007-6dd0-47fb-b8f4-39a0236d70cc
+
+	measure 'On Time In Full' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [On Time In Full Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Performance
+		lineageTag: d04ca2a8-3822-445e-943e-c9991d0b1206
+
+	measure 'On Time In Full Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [On Time In Full Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 6edbe21e-a832-4ae9-be0f-ab6dfa65ed1f
+
+	measure 'On Time In Full Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [On Time In Full Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 89b5fd4a-faa4-4218-bd20-eae01aedf965
+
+	measure 'On Time In Full Change' =
+			VAR P = [On Time In Full Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [On Time In Full] ), "N/A", FORMAT ( ( [On Time In Full] - P ) * 100, "+0.0;-0.0;0.0" ) & " pp" )
+		displayFolder: Supporting
+		lineageTag: 1551b081-499d-4a9e-bf3f-a05fccbbef96
+
+	measure 'On Time In Full Color' =
+			VAR P = [On Time In Full Previous]
+			VAR Delta = ( [On Time In Full] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [On Time In Full] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 54886955-4bf1-4e6e-8491-1c6ed052a064
+
+	measure 'Ship Cycle Days Base' = DIVIDE ( SUM ( Shipments[CycleUnitDays] ), SUM ( Shipments[Units] ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: abb3ac40-7c18-4fc8-bd79-92fcea6b5808
+
+	measure 'Ship Cycle Days' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Ship Cycle Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Performance
+		lineageTag: d3ecd820-6e9d-4b7a-b297-ed7d0f6037de
+
+	measure 'Ship Cycle Days Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Ship Cycle Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: d448e935-0968-4dba-a289-33cfa502ec13
+
+	measure 'Ship Cycle Days Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Ship Cycle Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: 86bf419e-1af4-499a-a0fc-5c534792d650
+
+	measure 'Ship Cycle Days Change' =
+			VAR P = [Ship Cycle Days Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Ship Cycle Days] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Ship Cycle Days] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 6a895854-bdb9-407d-a802-0fc7015878bb
+
+	measure 'Ship Cycle Days Color' =
+			VAR P = [Ship Cycle Days Previous]
+			VAR Delta = -( [Ship Cycle Days] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Ship Cycle Days] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 38d72863-90ee-4970-813d-3811669c6da8
+
+	measure 'Backlog Units Base' = COALESCE ( SUM ( Backlog[OpenUnits] ), 0 )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 2b44c367-2862-4976-8ebd-bad74f73e1c2
+
+	measure 'Backlog Units' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Backlog Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: c24c64e9-ce6e-47a8-9cf1-70d55f70bb36
+
+	measure 'Backlog Units Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Backlog Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: f36465d2-6a55-4ebd-8b98-366c609267e1
+
+	measure 'Backlog Units Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Backlog Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 1d55e816-5cc0-4213-9ff1-a2ef3297528d
+
+	measure 'Backlog Units Change' =
+			VAR P = [Backlog Units Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Backlog Units] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Backlog Units] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 218e53e7-a2ca-4231-9cfb-050fbc4a1de7
+
+	measure 'Backlog Units Color' =
+			VAR P = [Backlog Units Previous]
+			VAR Delta = -( [Backlog Units] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Backlog Units] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 7d087bab-63db-4965-abdb-b9c6d5593d34
+
+	measure 'Backlog Value Base' = COALESCE ( SUM ( Backlog[OpenValueUSD] ), 0 )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 6b6c4a69-c5b5-42f2-805d-4f209b158092
+
+	measure 'Backlog Value' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Backlog Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: a0b0ff83-7a11-4293-896a-db1aff841367
+
+	measure 'Backlog Value Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Backlog Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 8ee0d045-bb00-4c8e-a852-7e2f4f558cbf
+
+	measure 'Backlog Value Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Backlog Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 03af4ce7-72f4-42a9-8fe5-514e3d4bbb20
+
+	measure 'Backlog Value Change' =
+			VAR P = [Backlog Value Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Backlog Value] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Backlog Value] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 24b5528f-41f2-4b07-86fd-88ea68e5e886
+
+	measure 'Backlog Value Color' =
+			VAR P = [Backlog Value Previous]
+			VAR Delta = -( [Backlog Value] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Backlog Value] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 1036ba97-f6db-4d5a-92c1-d81b974c2b28
+
+	measure 'Backlog Orders Base' = COALESCE ( DISTINCTCOUNT ( Backlog[OrderID] ), 0 )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 3f16da53-6f67-4875-b213-0db91922f07c
+
+	measure 'Backlog Orders' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Backlog Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: 181956f5-f616-43fb-bda2-a5e2dbd67e6b
+
+	measure 'Backlog Orders Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Backlog Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: fe273682-676f-43f0-883e-c7f726193152
+
+	measure 'Backlog Orders Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Backlog Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 90366ba0-eebd-4ec2-a477-920f31622a36
+
+	measure 'Backlog Orders Change' =
+			VAR P = [Backlog Orders Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Backlog Orders] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Backlog Orders] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 6d5e19c5-9c31-481f-9990-274dec312918
+
+	measure 'Backlog Orders Color' =
+			VAR P = [Backlog Orders Previous]
+			VAR Delta = -( [Backlog Orders] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Backlog Orders] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 07afe4dd-497c-43a5-9caa-fc42fddbb7f3
+
+	measure 'Overdue Units Base' = COALESCE ( SUM ( Backlog[OverdueUnits] ), 0 )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: c810d829-9b80-445c-9fc6-0b7bd9fa9b7a
+
+	measure 'Overdue Units' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Overdue Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: e1563bc8-5145-43c9-879a-3d36f578bcc8
+
+	measure 'Overdue Units Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Overdue Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 65088ee4-da07-4f9c-bbff-f33e2a3ae8e0
+
+	measure 'Overdue Units Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Overdue Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 50f721af-cc30-43e3-99b9-a205f651f41d
+
+	measure 'Overdue Units Change' =
+			VAR P = [Overdue Units Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Overdue Units] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Overdue Units] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: e0831dbf-1e41-4cdc-803b-a635bdb9edd0
+
+	measure 'Overdue Units Color' =
+			VAR P = [Overdue Units Previous]
+			VAR Delta = -( [Overdue Units] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Overdue Units] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 581dd48a-56c3-47b6-9058-31e032e94285
+
+	measure 'Backlog Age Base' = DIVIDE ( SUM ( Backlog[AgeUnitDays] ), SUM ( Backlog[OpenUnits] ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: e41fb14c-c01a-44e5-a5d6-52b216cc5771
+
+	measure 'Backlog Age' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Backlog Age Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Performance
+		lineageTag: fea60fb0-c9c9-4a32-9b4c-9325fe5194c5
+
+	measure 'Backlog Age Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Backlog Age Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: e4e9dbca-0854-480b-a06f-7f5d6fdf70dc
+
+	measure 'Backlog Age Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Backlog Age Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: e0baf2ce-b800-4265-b2c8-8c0328a0220f
+
+	measure 'Backlog Age Change' =
+			VAR P = [Backlog Age Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Backlog Age] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Backlog Age] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: eaf466fb-775a-424d-a5f6-86dda9cd002a
+
+	measure 'Backlog Age Color' =
+			VAR P = [Backlog Age Previous]
+			VAR Delta = -( [Backlog Age] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Backlog Age] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: f68ac938-2968-4b32-aafe-320196cb985d
+
+	measure 'Inventory Value Base' = SUM ( Inventory[ClosingValueUSD] )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: d31b259b-6e2a-4958-b1f8-46b6f9866293
+
+	measure 'Inventory Value' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Inventory Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: 2208c028-9f57-49f4-855f-fe64fa1af8db
+
+	measure 'Inventory Value Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Inventory Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: c15a3547-6907-4774-a82a-3f90b3a88bca
+
+	measure 'Inventory Value Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Inventory Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: e5b9efef-bc6f-4886-b1fa-16443685c510
+
+	measure 'Inventory Value Change' =
+			VAR P = [Inventory Value Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Inventory Value] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Inventory Value] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: e118180e-a263-4745-b3cf-bf6a4233d4e9
+
+	measure 'Inventory Value Color' =
+			VAR P = [Inventory Value Previous]
+			VAR Delta = -( [Inventory Value] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Inventory Value] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 1feb95df-b5dc-47bb-b4a7-8299e323c800
+
+	measure 'Inventory Units Base' = SUM ( Inventory[ClosingUnits] )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 3259ca18-5bc6-4d96-9832-156e780c3b46
+
+	measure 'Inventory Units' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Inventory Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: 6eb20eeb-77a1-47ef-b476-beb7f1aeefd2
+
+	measure 'Inventory Units Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Inventory Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 3e61102c-37d2-44e1-b6aa-43d72ac4fc6b
+
+	measure 'Inventory Units Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Inventory Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: e0dbeed3-aa46-4561-90f8-b165e79fcffb
+
+	measure 'Inventory Units Change' =
+			VAR P = [Inventory Units Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Inventory Units] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Inventory Units] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 8af2b1bc-af9e-472a-8601-815ca07dec88
+
+	measure 'Inventory Units Color' =
+			VAR P = [Inventory Units Previous]
+			VAR Delta = ( [Inventory Units] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Inventory Units] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 6edeafa4-eadd-4121-b664-ff587ca33f76
+
+	measure 'Aged 90 Value Base' = SUM ( Inventory[Age91to180USD] ) + SUM ( Inventory[AgeOver180USD] )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 687cb21c-6ef8-4490-ad30-d4c1aab035aa
+
+	measure 'Aged 90 Value' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Aged 90 Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: 97e4c877-d730-4f0d-9b91-049a1b588032
+
+	measure 'Aged 90 Value Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Aged 90 Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: b46dab27-fbe8-46f7-ba3f-d88f843a4ae0
+
+	measure 'Aged 90 Value Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Aged 90 Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: af22a5e5-32b2-4acb-a7c1-570b49c00ccd
+
+	measure 'Aged 90 Value Change' =
+			VAR P = [Aged 90 Value Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Aged 90 Value] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Aged 90 Value] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 615729ad-fe8d-4657-8a22-08fe10b3b3b5
+
+	measure 'Aged 90 Value Color' =
+			VAR P = [Aged 90 Value Previous]
+			VAR Delta = -( [Aged 90 Value] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Aged 90 Value] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 862ff36f-52c0-46fe-afc8-d4c8dd224675
+
+	measure 'Aged 180 Value Base' = SUM ( Inventory[AgeOver180USD] )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 281b1d3a-de57-4838-89a2-5d6941f53934
+
+	measure 'Aged 180 Value' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Aged 180 Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: 3d87b0f2-3e48-4057-8de2-02dfd5242897
+
+	measure 'Aged 180 Value Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Aged 180 Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 729edbc4-fe51-4876-881f-53674f102754
+
+	measure 'Aged 180 Value Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Aged 180 Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: ec823d81-1382-45fd-aa55-b1a1f1c3503d
+
+	measure 'Aged 180 Value Change' =
+			VAR P = [Aged 180 Value Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Aged 180 Value] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Aged 180 Value] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 05ed036b-095e-4e13-91b3-17fd19547541
+
+	measure 'Aged 180 Value Color' =
+			VAR P = [Aged 180 Value Previous]
+			VAR Delta = -( [Aged 180 Value] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Aged 180 Value] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 2fef3f0e-2506-48d2-94f5-9bff9818a3ae
+
+	measure 'Aged 90 Share Base' = DIVIDE ( [Aged 90 Value Base], [Inventory Value Base] )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: ae660f1f-1afc-48f7-aa1b-6a7cb5d8c736
+
+	measure 'Aged 90 Share' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Aged 90 Share Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Performance
+		lineageTag: 94f85df9-d522-44ef-ba07-1bb9b62d8012
+
+	measure 'Aged 90 Share Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Aged 90 Share Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 46a02d95-6e96-4243-aeaf-7e270d2976ac
+
+	measure 'Aged 90 Share Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Aged 90 Share Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 683b9415-c72d-4a62-aed3-3e2352da0bfb
+
+	measure 'Aged 90 Share Change' =
+			VAR P = [Aged 90 Share Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Aged 90 Share] ), "N/A", FORMAT ( ( [Aged 90 Share] - P ) * 100, "+0.0;-0.0;0.0" ) & " pp" )
+		displayFolder: Supporting
+		lineageTag: b9c1427d-c023-41d2-9e4b-60b0271c6c68
+
+	measure 'Aged 90 Share Color' =
+			VAR P = [Aged 90 Share Previous]
+			VAR Delta = -( [Aged 90 Share] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Aged 90 Share] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 7a7a0ad8-66e0-4782-80ec-ba8147a9ac4e
+
+	measure 'Stockout SKU Days Base' = SUM ( Inventory[StockoutDays] )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 54f60166-7d56-4ba6-a6d4-8fe4ed1ca151
+
+	measure 'Stockout SKU Days' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Stockout SKU Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: 10033d5a-9a8d-4c51-b8e7-46b717704685
+
+	measure 'Stockout SKU Days Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Stockout SKU Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 14ecba6b-f46e-47bb-9ebf-8a9b9482a4cc
+
+	measure 'Stockout SKU Days Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Stockout SKU Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: a54a8579-0f00-44ad-8627-6a44817f5e77
+
+	measure 'Stockout SKU Days Change' =
+			VAR P = [Stockout SKU Days Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Stockout SKU Days] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Stockout SKU Days] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 63b43d4c-9d33-46a2-95f6-98de2d456931
+
+	measure 'Stockout SKU Days Color' =
+			VAR P = [Stockout SKU Days Previous]
+			VAR Delta = -( [Stockout SKU Days] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Stockout SKU Days] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: c98330ba-5fdb-40ba-bc85-3bbfe8346c5d
+
+	measure 'Storage Value Base' = SUMX ( Inventory, Inventory[ClosingValueUSD] * DIVIDE ( Inventory[StorageUnits], Inventory[ClosingUnits] ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 9a5c0a01-bdaf-447e-86d5-b7e150a2d77b
+
+	measure 'Storage Value' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Storage Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: 03d61a06-55c8-495d-a4f5-a43e6ea5335d
+
+	measure 'Storage Value Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Storage Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: ea769a2f-2320-406c-8adc-c2b7af939e3f
+
+	measure 'Storage Value Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Storage Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 0bfb0319-f6cc-46c3-a49e-ee7bc39a043c
+
+	measure 'Storage Value Change' =
+			VAR P = [Storage Value Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Storage Value] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Storage Value] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 54a1d865-9c6e-4ec1-bbae-c8f42cd2f5d9
+
+	measure 'Storage Value Color' =
+			VAR P = [Storage Value Previous]
+			VAR Delta = ( [Storage Value] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Storage Value] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: d3835201-8d05-4cdd-b369-cdd7c357c820
+
+	measure 'WIP Value Base' = SUMX ( Inventory, Inventory[ClosingValueUSD] * DIVIDE ( Inventory[WIPUnits], Inventory[ClosingUnits] ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 32ecf2de-0324-42a1-ba69-f200e5622eb6
+
+	measure 'WIP Value' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [WIP Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: 02a62008-98c8-48ff-a21e-d9c921e71bf7
+
+	measure 'WIP Value Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [WIP Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: eb0251a0-5dc1-4031-8cc3-dd8d4b4e5a13
+
+	measure 'WIP Value Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [WIP Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: e8f39b3a-64f7-463b-8c43-9057b8f68adc
+
+	measure 'WIP Value Change' =
+			VAR P = [WIP Value Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [WIP Value] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [WIP Value] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 01d57b32-e75d-483a-bc22-875d53a25121
+
+	measure 'WIP Value Color' =
+			VAR P = [WIP Value Previous]
+			VAR Delta = -( [WIP Value] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [WIP Value] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 40eb30b7-f2a6-4816-8f37-65645286f0b1
+
+	measure 'Received Units Base' = SUM ( Receipts[Units] )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: ee977c9e-82be-4ce6-82bd-0267312f6256
+
+	measure 'Received Units' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Received Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: 7434de5f-1ae1-4278-a14f-fed962b06b76
+
+	measure 'Received Units Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Received Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 62a28fe6-90db-4188-99fe-676c3258213a
+
+	measure 'Received Units Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Received Units Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 7ee3d57c-08ed-4da3-b62e-84b43184303d
+
+	measure 'Received Units Change' =
+			VAR P = [Received Units Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Received Units] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Received Units] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: c21343a5-17fc-4d6e-9ff0-f186da045a79
+
+	measure 'Received Units Color' =
+			VAR P = [Received Units Previous]
+			VAR Delta = ( [Received Units] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Received Units] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 33086942-154b-472d-aa99-924369e5d459
+
+	measure 'Receipt Value Base' = SUM ( Receipts[ValueUSD] )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 95ae26f2-fbfc-413c-9719-7d7685048983
+
+	measure 'Receipt Value' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Receipt Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: 452a5585-f895-4859-9c71-20dbc19b8651
+
+	measure 'Receipt Value Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Receipt Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: dc7f5373-a02c-4841-8986-886be3824b15
+
+	measure 'Receipt Value Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Receipt Value Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 7b8fd747-b9f0-4248-b2fb-d4436f9b4204
+
+	measure 'Receipt Value Change' =
+			VAR P = [Receipt Value Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Receipt Value] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Receipt Value] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: b40f6dcb-9184-47b5-a410-f51211d4cc83
+
+	measure 'Receipt Value Color' =
+			VAR P = [Receipt Value Previous]
+			VAR Delta = ( [Receipt Value] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Receipt Value] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 55444aaf-0e3c-41ec-8a5e-9fcaacb6b2ef
+
+	measure 'Receipt Lead Days Base' = DIVIDE ( SUMX ( Receipts, Receipts[LeadDays] * Receipts[Units] ), SUM ( Receipts[Units] ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: 567ac8d2-4d7a-4e63-a5b0-c9f15eb9ff00
+
+	measure 'Receipt Lead Days' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Receipt Lead Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Performance
+		lineageTag: 5cf45c2d-f213-4437-9c23-67f64ee071b9
+
+	measure 'Receipt Lead Days Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Receipt Lead Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: e0701cf7-0886-47e3-b009-e7a784943ef8
+
+	measure 'Receipt Lead Days Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Receipt Lead Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: 86c11cbf-2513-4c31-be10-9fd06ef04085
+
+	measure 'Receipt Lead Days Change' =
+			VAR P = [Receipt Lead Days Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Receipt Lead Days] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Receipt Lead Days] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 9a11d51d-e393-4f13-af3f-535f0664cb8b
+
+	measure 'Receipt Lead Days Color' =
+			VAR P = [Receipt Lead Days Previous]
+			VAR Delta = -( [Receipt Lead Days] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Receipt Lead Days] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: d2e62a39-3615-475b-92a9-d7a23887e603
+
+	measure 'Due Purchase Orders Base' = COUNTROWS ( Purchases )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: bcff1f27-d08b-440f-b343-81f53ba186ac
+
+	measure 'Due Purchase Orders' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Due Purchase Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: 7a8a5d60-dae8-43ad-9b60-53b38f9c1629
+
+	measure 'Due Purchase Orders Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Due Purchase Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 9b7dabf9-7ed1-46e6-9b1a-bed126ac0e55
+
+	measure 'Due Purchase Orders Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Due Purchase Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 2da327e4-7c25-4407-95c1-e61a80f236ea
+
+	measure 'Due Purchase Orders Change' =
+			VAR P = [Due Purchase Orders Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Due Purchase Orders] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Due Purchase Orders] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 72b165ed-c962-4c34-b7b2-4fe72d68e932
+
+	measure 'Due Purchase Orders Color' =
+			VAR P = [Due Purchase Orders Previous]
+			VAR Delta = ( [Due Purchase Orders] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Due Purchase Orders] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: e9bf0f08-83c0-4e48-b130-27994f553407
+
+	measure 'Supplier OTIF Base' = DIVIDE ( SUM ( Purchases[OnTimeFull] ), COUNTROWS ( Purchases ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 8479429f-d75d-4eac-8dfc-6bb4e36bb5ec
+
+	measure 'Supplier OTIF' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Supplier OTIF Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Performance
+		lineageTag: 479baae0-4ce2-4123-83d5-08d0f5e2528b
+
+	measure 'Supplier OTIF Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Supplier OTIF Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 42d765f0-caa2-4877-9730-cd92336400d4
+
+	measure 'Supplier OTIF Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Supplier OTIF Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 4f005d21-e4a3-4ebd-b418-e10115c9bc81
+
+	measure 'Supplier OTIF Change' =
+			VAR P = [Supplier OTIF Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Supplier OTIF] ), "N/A", FORMAT ( ( [Supplier OTIF] - P ) * 100, "+0.0;-0.0;0.0" ) & " pp" )
+		displayFolder: Supporting
+		lineageTag: 8f3b59dd-9590-4da4-9fb1-eeb53d4487e7
+
+	measure 'Supplier OTIF Color' =
+			VAR P = [Supplier OTIF Previous]
+			VAR Delta = ( [Supplier OTIF] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Supplier OTIF] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 10bc0d5a-3f7f-4621-81ae-d5b16bb65a72
+
+	measure 'Late Purchase Orders Base' = COUNTROWS ( Purchases ) - SUM ( Purchases[OnTimeFull] )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: daf8297c-055b-4e86-8b20-1d743977645b
+
+	measure 'Late Purchase Orders' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Late Purchase Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: 8af8b5ac-7729-4b07-a60e-777faecbb631
+
+	measure 'Late Purchase Orders Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Late Purchase Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: bc86ae1f-6d93-4cdd-8409-44019795ee99
+
+	measure 'Late Purchase Orders Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Late Purchase Orders Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 8afcf7b7-8bde-46c1-a2db-7d584fbdcf43
+
+	measure 'Late Purchase Orders Change' =
+			VAR P = [Late Purchase Orders Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Late Purchase Orders] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Late Purchase Orders] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 044a109a-6970-4b2c-b6bd-797978ee6ac0
+
+	measure 'Late Purchase Orders Color' =
+			VAR P = [Late Purchase Orders Previous]
+			VAR Delta = -( [Late Purchase Orders] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Late Purchase Orders] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 906ccf56-f8e2-4953-917b-f21bd2551de7
+
+	measure 'Stage Completions Base' = SUM ( Throughput[CompletedUnits] )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: a6989e8c-e4ee-4f17-8347-1f53ff6a2964
+
+	measure 'Stage Completions' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Stage Completions Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: 0ee65d72-ac11-4d3c-813e-7b38b86d5099
+
+	measure 'Stage Completions Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Stage Completions Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: dd2a3ec4-8470-4825-90c2-965dff18a69d
+
+	measure 'Stage Completions Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Stage Completions Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 8b471ee4-3d3a-49f3-a64b-b5e0528ca6f3
+
+	measure 'Stage Completions Change' =
+			VAR P = [Stage Completions Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Stage Completions] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Stage Completions] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 74d9a6a2-5d3d-4e09-bdfc-20f2d19e401c
+
+	measure 'Stage Completions Color' =
+			VAR P = [Stage Completions Previous]
+			VAR Delta = ( [Stage Completions] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Stage Completions] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: a7597220-fc0e-42c0-8a62-4459f9361409
+
+	measure 'Stage Capacity Base' = SUM ( Throughput[CapacityUnits] )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: cbb45657-99fc-4435-a85f-7404cb0f1778
+
+	measure 'Stage Capacity' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Stage Capacity Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Performance
+		lineageTag: 6161b2c6-c59a-4235-8d84-396cd675c6e1
+
+	measure 'Stage Capacity Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Stage Capacity Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: 07686b91-28f0-40d8-8c3e-bfa231aa8ce0
+
+	measure 'Stage Capacity Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Stage Capacity Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: #,0
+		displayFolder: Supporting
+		lineageTag: ae66bf67-57b0-40f5-94b8-e19686f69183
+
+	measure 'Stage Capacity Change' =
+			VAR P = [Stage Capacity Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Stage Capacity] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Stage Capacity] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 3d338301-a5f1-43d3-afbc-25123d850488
+
+	measure 'Stage Capacity Color' =
+			VAR P = [Stage Capacity Previous]
+			VAR Delta = ( [Stage Capacity] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Stage Capacity] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 7bd6d11b-06df-44ad-8726-4e863a5ffb82
+
+	measure 'Capacity Use Base' = DIVIDE ( [Stage Completions Base], [Stage Capacity Base] )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 3f4f89b9-725d-47f4-8ea8-e062f5f3d1bf
+
+	measure 'Capacity Use' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Capacity Use Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Performance
+		lineageTag: 846d539d-ae21-45d3-b0e1-f911de2d4575
+
+	measure 'Capacity Use Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Capacity Use Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: bba63d38-d86d-4b19-bcb5-9ebca8a3eaa5
+
+	measure 'Capacity Use Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Capacity Use Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0%
+		displayFolder: Supporting
+		lineageTag: 661f0f20-2c04-458f-a0d5-6ac37cf6bb29
+
+	measure 'Capacity Use Change' =
+			VAR P = [Capacity Use Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Capacity Use] ), "N/A", FORMAT ( ( [Capacity Use] - P ) * 100, "+0.0;-0.0;0.0" ) & " pp" )
+		displayFolder: Supporting
+		lineageTag: 3783074b-39d3-4184-a4db-ef4c85c65c4e
+
+	measure 'Capacity Use Color' =
+			VAR P = [Capacity Use Previous]
+			VAR Delta = ( [Capacity Use] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Capacity Use] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: c2bcc2a2-bd9f-4dda-8c74-c37d128e36f4
+
+	measure 'Stage Wait Days Base' = DIVIDE ( SUM ( Throughput[WaitUnitDays] ), SUM ( Throughput[CompletedUnits] ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: e854172c-3fab-4a4f-b72c-7084b85a3e5e
+
+	measure 'Stage Wait Days' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Stage Wait Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Performance
+		lineageTag: 393cf2f2-410a-4ec9-8c0b-a8579f73e66f
+
+	measure 'Stage Wait Days Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Stage Wait Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: 987fb4f5-8bcb-43cf-83a9-5224fe11810a
+
+	measure 'Stage Wait Days Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Stage Wait Days Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: 0.0
+		displayFolder: Supporting
+		lineageTag: 186e0aa8-2176-474f-ae57-c7ce4cc55320
+
+	measure 'Stage Wait Days Change' =
+			VAR P = [Stage Wait Days Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Stage Wait Days] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Stage Wait Days] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: abb9ed43-3708-4074-9f5d-41af54862f35
+
+	measure 'Stage Wait Days Color' =
+			VAR P = [Stage Wait Days Previous]
+			VAR Delta = -( [Stage Wait Days] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Stage Wait Days] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 28327b2d-5e30-49ba-aab7-4b38eb5e6c7c
+
+	measure 'Age 0to30 Base' = SUM ( Inventory[Age0to30USD] )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: aa3d6c9f-0fd8-4bba-9c07-d3d99a4f9f27
+
+	measure 'Age 0to30' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Age 0to30 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: 54769ddd-a866-4c83-a6b0-b69a3a524012
+
+	measure 'Age 0to30 Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Age 0to30 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 5b6f068b-d45d-40c0-8609-dc3793a3849f
+
+	measure 'Age 0to30 Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Age 0to30 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 058885a9-301a-4760-a87f-8534cf5b61b1
+
+	measure 'Age 0to30 Change' =
+			VAR P = [Age 0to30 Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Age 0to30] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Age 0to30] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 803ff3f6-c305-4e66-8b09-3f7a22f485df
+
+	measure 'Age 0to30 Color' =
+			VAR P = [Age 0to30 Previous]
+			VAR Delta = ( [Age 0to30] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Age 0to30] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: afc3d338-562d-4fff-b596-b1c773251fa7
+
+	measure 'Age 31to60 Base' = SUM ( Inventory[Age31to60USD] )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 7981f2a4-bcdb-4828-9d92-494ccb6ac546
+
+	measure 'Age 31to60' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Age 31to60 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: 07eed301-8d90-4cbe-9c22-504b7a01e3e0
+
+	measure 'Age 31to60 Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Age 31to60 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 56144e2c-0371-4be1-a7ac-173f581d8291
+
+	measure 'Age 31to60 Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Age 31to60 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: f70cbc34-1364-4111-9a79-d67222378d9e
+
+	measure 'Age 31to60 Change' =
+			VAR P = [Age 31to60 Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Age 31to60] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Age 31to60] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 096f9315-11f4-420b-a910-a27a6eaac0a2
+
+	measure 'Age 31to60 Color' =
+			VAR P = [Age 31to60 Previous]
+			VAR Delta = ( [Age 31to60] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Age 31to60] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 3ee1df21-27ea-4974-89b8-0dc4f34b0c8a
+
+	measure 'Age 61to90 Base' = SUM ( Inventory[Age61to90USD] )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 8d1a2112-9117-41d3-abad-bef0fba81968
+
+	measure 'Age 61to90' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Age 61to90 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: a4b4ac2b-da4e-43dc-ad36-a68224814e4a
+
+	measure 'Age 61to90 Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Age 61to90 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: b4a14df5-c585-4116-b0f4-7c6092ce64ab
+
+	measure 'Age 61to90 Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Age 61to90 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: fddd9f4e-05c5-46bb-b213-be2a3f618f81
+
+	measure 'Age 61to90 Change' =
+			VAR P = [Age 61to90 Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Age 61to90] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Age 61to90] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: e2683313-8f99-45b2-b9d8-894cf644132d
+
+	measure 'Age 61to90 Color' =
+			VAR P = [Age 61to90 Previous]
+			VAR Delta = ( [Age 61to90] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Age 61to90] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 2d3c06d7-07ab-49eb-b930-580301ac49eb
+
+	measure 'Age 91to180 Base' = SUM ( Inventory[Age91to180USD] )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 8b7d2a45-ecfd-4c11-914d-db8ae7480198
+
+	measure 'Age 91to180' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Age 91to180 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: ede1cac1-c563-4aa5-8c31-6e3212124ff9
+
+	measure 'Age 91to180 Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Age 91to180 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 71725e42-2d46-4728-a553-9bd70a0712c9
+
+	measure 'Age 91to180 Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Age 91to180 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 96185c00-7f59-4ac9-ae2a-9d6faad9b9cd
+
+	measure 'Age 91to180 Change' =
+			VAR P = [Age 91to180 Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Age 91to180] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Age 91to180] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: f26394b4-3434-418b-b04d-f18dffa08608
+
+	measure 'Age 91to180 Color' =
+			VAR P = [Age 91to180 Previous]
+			VAR Delta = ( [Age 91to180] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Age 91to180] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 742a5cba-262a-4058-a3e0-d3132dfb47d3
+
+	measure 'Age Over180 Base' = SUM ( Inventory[AgeOver180USD] )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 89df1bc7-52fd-4eb6-a178-3be0230bfadf
+
+	measure 'Age Over180' =
+			VAR D = [Selected Month]
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Age Over180 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Performance
+		lineageTag: a7661a58-0bf1-49c4-93ce-b9c4e49909d4
+
+	measure 'Age Over180 Previous' =
+			VAR D = EDATE ( [Selected Month], -1 )
+			RETURN IF ( D >= DATE ( 2024, 1, 1 ), CALCULATE ( [Age Over180 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: 14d5e382-0e0c-4849-a546-8b7eed859ee9
+
+	measure 'Age Over180 Trend' =
+			VAR D = SELECTEDVALUE ( 'Trend Month'[MonthStart] )
+			RETURN IF ( NOT ISBLANK ( D ) && D >= EDATE ( [Selected Month], -11 ) && D <= [Selected Month], CALCULATE ( [Age Over180 Base], REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], D, EOMONTH ( D, 0 ) ) ) )
+		formatString: $#,0;($#,0);$0
+		displayFolder: Supporting
+		lineageTag: af278e8f-d7d4-49c0-aa8e-82231ca8bd48
+
+	measure 'Age Over180 Change' =
+			VAR P = [Age Over180 Previous]
+			RETURN IF ( ISBLANK ( P ) || ISBLANK ( [Age Over180] ), "N/A", IF ( P = 0, "N/A", FORMAT ( DIVIDE ( [Age Over180] - P, P ), "+0.0%;-0.0%;0.0%" ) ) )
+		displayFolder: Supporting
+		lineageTag: 707d430f-4b70-41c1-a50a-4869c7d0749c
+
+	measure 'Age Over180 Color' =
+			VAR P = [Age Over180 Previous]
+			VAR Delta = ( [Age Over180] - P )
+			RETURN SWITCH ( TRUE (), ISBLANK ( P ) || ISBLANK ( [Age Over180] ), "#000000", Delta > 0.000001, "#237A42", Delta < -0.000001, "#B3261E", "#000000" )
+		displayFolder: Supporting
+		lineageTag: 350c024b-8774-46e4-8013-0ef7be3647e3
+
+	measure 'Turnover 12M' = VAR S = [Selected Month] VAR B = EDATE ( S, -11 ) VAR E = EOMONTH ( S, 0 ) VAR C = CALCULATE ( SUM ( Shipments[COGSUSD] ), REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], B, E ) ) VAR V = CALCULATE ( SUM ( Inventory[DailyValueSumUSD] ), REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], B, E ) ) RETURN IF ( B >= DATE ( 2024, 1, 1 ), DIVIDE ( C, DIVIDE ( V, DATEDIFF ( B, E, DAY ) + 1 ) ) )
+		formatString: 0.0"x"
+		displayFolder: Performance
+		lineageTag: 7f15679e-bc6e-4269-bdbc-283d41622cb6
+
+	measure 'Days Cover' = VAR E = EOMONTH ( [Selected Month], 0 ) VAR B = E - 89 VAR U = CALCULATE ( SUM ( Shipments[Units] ), REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], B, E ) ) RETURN IF ( B >= DATE ( 2024, 1, 1 ), DIVIDE ( [Inventory Units], DIVIDE ( U, 90 ) ) )
+		formatString: 0.0
+		displayFolder: Performance
+		lineageTag: 0b491e39-4f20-4558-ac24-7459c86f2819
+
+	measure 'Queue Capacity Days' = DIVIDE ( [Backlog Units], DIVIDE ( [Stage Capacity], CALCULATE ( DISTINCTCOUNT ( Throughput[Date] ), REMOVEFILTERS ( Calendar ), DATESBETWEEN ( Calendar[Date], [Selected Month], EOMONTH ( [Selected Month], 0 ) ) ) ) )
+		formatString: 0.0
+		displayFolder: Performance
+		lineageTag: c03e8399-c5b8-4b6d-a774-19d95ea3679e
+
+	measure 'Report Heading' = FORMAT ( [Selected Month], "MMMM yyyy" ) & " | Operations & Inventory | USD"
+		displayFolder: Performance
+		lineageTag: c1b0ac13-b7c5-462c-bdef-242a7219bf79
+
+	column Placeholder
+		dataType: int64
+		isHidden
+		lineageTag: 9b4ecc8a-a333-42a3-a3ed-145bcac37673
+		sourceColumn: Placeholder
+
+	partition Metrics = m
+		mode: import
+		source = #table(type table [Placeholder=Int64.Type], {{1}})
+

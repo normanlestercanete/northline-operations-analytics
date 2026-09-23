@@ -1,0 +1,58 @@
+table Products
+	lineageTag: 93884bab-5cc6-41c3-8fcc-f276951dba1c
+
+	column ProductID
+		dataType: int64
+		formatString: #,0
+		lineageTag: ea11e4a0-c82e-4440-9a6e-6933ab33b463
+		summarizeBy: none
+		sourceColumn: ProductID
+
+	column SKU
+		dataType: string
+		lineageTag: 9b3142b8-b6a0-4e01-8609-3490283b751b
+		summarizeBy: none
+		sourceColumn: SKU
+
+	column Product
+		dataType: string
+		lineageTag: e6b0ba4a-222f-4b07-965f-7358124a85c7
+		summarizeBy: none
+		sourceColumn: Product
+
+	column Category
+		dataType: string
+		lineageTag: 4a3eeee5-ad49-4d7b-8ada-31213ed90967
+		summarizeBy: none
+		sourceColumn: Category
+
+	column SupplierID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9a6b44a2-c9fd-45e0-bc85-6ace01a8b374
+		summarizeBy: none
+		sourceColumn: SupplierID
+
+	column UnitCostUSD
+		dataType: decimal
+		formatString: $#,0.00
+		lineageTag: d0698e2c-34dc-42f3-85bd-ff6cb2c6a81d
+		summarizeBy: none
+		sourceColumn: UnitCostUSD
+
+	column DemandClass
+		dataType: string
+		lineageTag: 27235492-811d-4709-a8b6-ba77b67be439
+		summarizeBy: none
+		sourceColumn: DemandClass
+
+	partition Products = m
+		mode: import
+		source =
+				let
+				 Source = Csv.Document(File.Contents(DataFolder & "Products.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				 Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				 Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				 Typed = Table.TransformColumnTypes(Nulls, {{"ProductID", Int64.Type}, {"SKU", type text}, {"Product", type text}, {"Category", type text}, {"SupplierID", Int64.Type}, {"UnitCostUSD", Currency.Type}, {"DemandClass", type text}}, "en-US")
+				in Typed
+

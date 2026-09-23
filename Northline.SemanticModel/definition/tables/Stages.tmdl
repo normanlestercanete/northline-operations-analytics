@@ -1,0 +1,18 @@
+table Stages
+	lineageTag: 6fa33553-b59f-4b3b-ace1-6a00026c0a26
+
+	column Stage
+		dataType: string
+		lineageTag: 211c60a8-1c83-4b92-9086-182033889612
+		sourceColumn: Stage
+		sortByColumn: StageOrder
+
+	column StageOrder
+		dataType: int64
+		lineageTag: e1e8bdee-ce61-4d3a-b85a-b4029f51fb85
+		sourceColumn: StageOrder
+
+	partition Stages = m
+		mode: import
+		source = #table(type table [Stage=text,StageOrder=Int64.Type], {{"Pick",1},{"Pack",2},{"Dispatch",3}})
+

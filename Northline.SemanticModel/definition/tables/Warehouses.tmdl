@@ -1,0 +1,32 @@
+table Warehouses
+	lineageTag: eac38b1b-cdce-49e3-a3b6-91d6c20f28e0
+
+	column WarehouseID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1a4278ec-5527-4e04-b787-d63f8bb6b628
+		summarizeBy: none
+		sourceColumn: WarehouseID
+
+	column Warehouse
+		dataType: string
+		lineageTag: 06c30fb1-8cf4-4ab1-bd1c-470e2d921cb6
+		summarizeBy: none
+		sourceColumn: Warehouse
+
+	column Region
+		dataType: string
+		lineageTag: 5b4e8ec3-c235-4bb7-a8d2-40960819132e
+		summarizeBy: none
+		sourceColumn: Region
+
+	partition Warehouses = m
+		mode: import
+		source =
+				let
+				 Source = Csv.Document(File.Contents(DataFolder & "Warehouses.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				 Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				 Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				 Typed = Table.TransformColumnTypes(Nulls, {{"WarehouseID", Int64.Type}, {"Warehouse", type text}, {"Region", type text}}, "en-US")
+				in Typed
+
