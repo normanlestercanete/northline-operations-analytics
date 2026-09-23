@@ -1386,7 +1386,7 @@ table Metrics
 		displayFolder: Performance
 		lineageTag: c03e8399-c5b8-4b6d-a774-19d95ea3679e
 
-	measure 'Report Heading' = FORMAT ( [Selected Month], "MMMM yyyy" ) & " | Operations & Inventory | USD"
+	measure 'Report Heading' = FORMAT ( [Selected Month], "MMMM yyyy" ) & " | Operations & Inventory"
 		displayFolder: Performance
 		lineageTag: c1b0ac13-b7c5-462c-bdef-242a7219bf79
 
