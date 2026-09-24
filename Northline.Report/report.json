@@ -7,6 +7,31 @@
         "disabled": false,
         "items": [
           {
+            "name": "New_Project_(2)13526742605976505.jpg",
+            "path": "New_Project_(2)13526742605976505.jpg",
+            "type": 100
+          },
+          {
+            "name": "New_Project_(2)22819362522385966.jpg",
+            "path": "New_Project_(2)22819362522385966.jpg",
+            "type": 100
+          },
+          {
+            "name": "New_Project_(2)3854157644888456.jpg",
+            "path": "New_Project_(2)3854157644888456.jpg",
+            "type": 100
+          },
+          {
+            "name": "New_Project_(2)7790806989808692.jpg",
+            "path": "New_Project_(2)7790806989808692.jpg",
+            "type": 100
+          },
+          {
+            "name": "New_Project_(2)7900752399720485.jpg",
+            "path": "New_Project_(2)7900752399720485.jpg",
+            "type": 100
+          },
+          {
             "name": "Northline_Theme.json",
             "path": "Northline_Theme.json",
             "type": 201
@@ -14,11 +39,6 @@
           {
             "name": "northline_logo7019916867823561.png",
             "path": "northline_logo7019916867823561.png",
-            "type": 100
-          },
-          {
-            "name": "northlinebg21362798326976673.jpg",
-            "path": "northlinebg21362798326976673.jpg",
             "type": 100
           }
         ],
@@ -29,7 +49,7 @@
   ],
   "sections": [
     {
-      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0F4F8'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'northlinebg2.jpg'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"northlinebg21362798326976673.jpg\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}}}}]}}",
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0F4F8'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'New Project (2).jpg'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"New_Project_(2)7790806989808692.jpg\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}}}}]}}",
       "displayName": "Inventory Health",
       "displayOption": 1,
       "filters": "[]",
@@ -203,7 +223,7 @@
       "width": 1920.00
     },
     {
-      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0F4F8'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'northlinebg2.jpg'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"northlinebg21362798326976673.jpg\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}}}}]}}",
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0F4F8'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'New Project (2).jpg'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"New_Project_(2)13526742605976505.jpg\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}}}}]}}",
       "displayName": "Operations Overview",
       "displayOption": 1,
       "filters": "[]",
@@ -376,7 +396,7 @@
       "width": 1920.00
     },
     {
-      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0F4F8'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'northlinebg2.jpg'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"northlinebg21362798326976673.jpg\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}}}}]}}",
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0F4F8'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'New Project (2).jpg'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"New_Project_(2)7900752399720485.jpg\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}}}}]}}",
       "displayName": "Order Fulfillment",
       "displayOption": 1,
       "filters": "[]",
@@ -550,7 +570,7 @@
       "width": 1920.00
     },
     {
-      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0F4F8'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'northlinebg2.jpg'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"northlinebg21362798326976673.jpg\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}}}}]}}",
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0F4F8'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'New Project (2).jpg'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"New_Project_(2)22819362522385966.jpg\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}}}}]}}",
       "displayName": "Supplier Performance",
       "displayOption": 1,
       "filters": "[]",
@@ -724,7 +744,7 @@
       "width": 1920.00
     },
     {
-      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0F4F8'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'northlinebg2.jpg'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"northlinebg21362798326976673.jpg\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}}}}]}}",
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0F4F8'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'New Project (2).jpg'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"New_Project_(2)3854157644888456.jpg\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}}}}]}}",
       "displayName": "Warehouse Throughput",
       "displayOption": 1,
       "filters": "[]",
